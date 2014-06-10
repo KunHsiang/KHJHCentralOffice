@@ -1131,7 +1131,7 @@
             // 
             this.labelX31.BackgroundStyle.Class = "";
             this.labelX31.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX31.Location = new System.Drawing.Point(23, 589);
+            this.labelX31.Location = new System.Drawing.Point(23, 592);
             this.labelX31.Name = "labelX31";
             this.labelX31.Size = new System.Drawing.Size(87, 21);
             this.labelX31.TabIndex = 17;
@@ -1144,7 +1144,7 @@
             // 
             this.textBoxX31.Border.Class = "TextBoxBorder";
             this.textBoxX31.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.textBoxX31.Location = new System.Drawing.Point(120, 587);
+            this.textBoxX31.Location = new System.Drawing.Point(120, 590);
             this.textBoxX31.Name = "textBoxX31";
             this.textBoxX31.Size = new System.Drawing.Size(53, 25);
             this.textBoxX31.TabIndex = 16;
