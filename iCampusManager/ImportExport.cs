@@ -8,7 +8,7 @@ using FISCA;
 using FISCA.Presentation;
 using FISCA.UDT;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal class ImportExport
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using DesktopLib;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal class DSNSField : ListPaneFieldImproved
     {

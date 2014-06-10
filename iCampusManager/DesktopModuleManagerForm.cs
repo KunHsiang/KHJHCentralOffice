@@ -13,7 +13,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class DesktopModuleManagerForm : BaseForm
     {

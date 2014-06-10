@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using FISCA.Presentation.Controls;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal partial class GadgetOrderAdjustForm : BaseForm
     {

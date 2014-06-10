@@ -7,7 +7,7 @@ using DesktopLib;
 using DevComponents.AdvTree;
 using FISCA.Presentation;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal class DefaultView : TreeNavViewBase
     {

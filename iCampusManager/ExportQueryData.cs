@@ -12,7 +12,7 @@ using FISCA;
 using FISCA.Data;
 using FISCA.DSA;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal class ExportQueryData
     {

@@ -1,7 +1,7 @@
 ﻿using DesktopLib;
-using iCampusManager;
+using KHJHCentralOffice;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     partial class SimpleDefContent
     {

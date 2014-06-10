@@ -10,7 +10,7 @@ using DevComponents.DotNetBar;
 using FISCA;
 using FISCA.DSA;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class WebGadgetItem : DetailContentImproved
     {

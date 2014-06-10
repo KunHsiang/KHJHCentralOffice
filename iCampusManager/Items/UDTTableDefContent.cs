@@ -11,7 +11,7 @@ using FISCA;
 using FISCA.DSA;
 using FISCA.Presentation.Controls;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class UDTTableDefContent : BaseForm
     {

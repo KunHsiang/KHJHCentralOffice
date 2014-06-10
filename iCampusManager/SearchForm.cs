@@ -13,7 +13,7 @@ using FISCA.Presentation.Controls;
 using FISCA;
 using DesktopLib;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class SearchForm : BaseForm
     {

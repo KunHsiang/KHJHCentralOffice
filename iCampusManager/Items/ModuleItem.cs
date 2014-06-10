@@ -10,7 +10,7 @@ using System.Threading;
 using System.Windows.Forms;
 using DesktopLib;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class ModuleItem : DetailContentImproved
     {

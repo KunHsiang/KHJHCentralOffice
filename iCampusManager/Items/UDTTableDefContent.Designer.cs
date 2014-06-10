@@ -1,5 +1,5 @@
 ﻿using DesktopLib;
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     partial class UDTTableDefContent
     {

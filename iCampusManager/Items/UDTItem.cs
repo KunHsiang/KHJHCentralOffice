@@ -12,7 +12,7 @@ using FISCA;
 using System.Xml.XPath;
 using DesktopLib;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class UDTItem : DetailContentImproved
     {

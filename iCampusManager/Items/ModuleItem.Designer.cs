@@ -1,4 +1,4 @@
-﻿namespace iCampusManager
+﻿namespace KHJHCentralOffice
 {
     partial class ModuleItem
     {

@@ -1,4 +1,4 @@
-﻿namespace iCampusManager
+﻿namespace KHJHCentralOffice
 {
     partial class GadgetOrderAdjustForm
     {
@@ -121,7 +121,7 @@
             this.btnUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUp.BackColor = System.Drawing.Color.Transparent;
             this.btnUp.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnUp.Image = global::iCampusManager.Properties.Resources.atom_up_128;
+            this.btnUp.Image = global::KHJHCentralOffice.Properties.Resources.atom_up_128;
             this.btnUp.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.btnUp.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnUp.Location = new System.Drawing.Point(632, 12);
@@ -137,7 +137,7 @@
             this.btnDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDown.BackColor = System.Drawing.Color.Transparent;
             this.btnDown.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnDown.Image = global::iCampusManager.Properties.Resources.atom_down_128;
+            this.btnDown.Image = global::KHJHCentralOffice.Properties.Resources.atom_down_128;
             this.btnDown.ImageFixedSize = new System.Drawing.Size(48, 48);
             this.btnDown.ImagePosition = DevComponents.DotNetBar.eImagePosition.Top;
             this.btnDown.Location = new System.Drawing.Point(632, 88);

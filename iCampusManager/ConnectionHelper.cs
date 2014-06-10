@@ -7,7 +7,7 @@ using DesktopLib;
 using FISCA.Authentication;
 using FISCA.DSA;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal class ConnectionHelper
     {

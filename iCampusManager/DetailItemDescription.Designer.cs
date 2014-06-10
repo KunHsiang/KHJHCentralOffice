@@ -1,4 +1,4 @@
-﻿namespace iCampusManager
+﻿namespace KHJHCentralOffice
 {
     partial class DetailItemDescription
     {
@@ -40,7 +40,7 @@
             this.lblName.BackgroundStyle.Class = "";
             this.lblName.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblName.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblName.Font = new System.Drawing.Font("微軟正黑體", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.lblName.Font = new System.Drawing.Font("Microsoft JhengHei", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.lblName.Location = new System.Drawing.Point(0, 0);
             this.lblName.Name = "lblName";
             this.lblName.PaddingLeft = 8;

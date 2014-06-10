@@ -7,8 +7,8 @@
     <ProjectGuid>{C25C6DE8-29B6-4BD6-A8B3-F79C822191A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>iCampusManager</RootNamespace>
-    <AssemblyName>iCampusManager</AssemblyName>
+    <RootNamespace>KHJHCentralOffice</RootNamespace>
+    <AssemblyName>KHJHCentralOffice</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
@@ -45,58 +45,61 @@
   <ItemGroup>
     <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\CommonAssemblies\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <HintPath>C:\ischool\components\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.SyntaxEditor.Addons.Web.Net20, Version=4.0.262.0, Culture=neutral, PublicKeyToken=21a821480e210563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\CommonAssemblies\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.dll</HintPath>
+      <HintPath>C:\ischool\components\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.SyntaxEditor.Net20, Version=4.0.283.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\CommonAssemblies\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <HintPath>C:\ischool\components\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.WinUICore.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\CommonAssemblies\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <HintPath>C:\ischool\components\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Cells">
-      <HintPath>..\..\..\Desktop\ischool desktop\modules\Campus\Aspose.Cells.dll</HintPath>
+      <HintPath>C:\ischool\modules\SHSchoolLoader\Aspose.Cells.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Aspose.Chart">
-      <HintPath>C:\Program Files (x86)\Aspose\Aspose.Chart\Bin\net2.0\Aspose.Chart.dll</HintPath>
+    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
+      <Private>False</Private>
     </Reference>
-    <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL" />
     <Reference Include="FISCA">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Authentication">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Authentication.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Authentication.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Core">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Core.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Data">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Data.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAClient">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.DSAClient.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.DSAClient.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Permission.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Permission.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Presentation">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Presentation.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Presentation.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.UDT">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.UDT.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.UDT.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -121,6 +124,18 @@
     <Compile Include="ConnectionHelper.cs" />
     <Compile Include="DefaultView.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\GraduateSurveyApproach.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\GraduateSurveyApproach.Designer.cs">
+      <DependentUpon>GraduateSurveyApproach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Items\GraduateSurveyVagrant.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Items\GraduateSurveyVagrant.Designer.cs">
+      <DependentUpon>GraduateSurveyVagrant.cs</DependentUpon>
     </Compile>
     <Compile Include="PropertyComparer.cs" />
     <Compile Include="SortableBindingList.cs" />
@@ -218,7 +233,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RibbonButtons.cs" />
-    <Compile Include="School.cs" />
+    <Compile Include="UDT\ApproachStatistics.cs" />
+    <Compile Include="UDT\School.cs" />
     <Compile Include="SearchForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +247,7 @@
     <Compile Include="SQLForm.Designer.cs">
       <DependentUpon>SQLForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UDT\VagrantStatistics.cs" />
     <Compile Include="VAFinder.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -251,6 +268,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Items\BasicInfoItem.resx">
       <DependentUpon>BasicInfoItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items\GraduateSurveyApproach.resx">
+      <DependentUpon>GraduateSurveyApproach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Items\GraduateSurveyVagrant.resx">
+      <DependentUpon>GraduateSurveyVagrant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Items\GadgetOrderAdjustForm.resx">
       <DependentUpon>GadgetOrderAdjustForm.cs</DependentUpon>
@@ -332,8 +355,10 @@
     <ProjectReference Include="..\DesktopLib\DesktopLib.csproj">
       <Project>{6511b475-96a3-4c16-9ef6-a1393896cab4}</Project>
       <Name>DesktopLib</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

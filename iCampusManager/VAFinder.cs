@@ -1,6 +1,6 @@
 ﻿using FISCA.DSA;
 using FISCA.Presentation.Controls;
-using iCampusManager;
+using KHJHCentralOffice;
 using System;
 using System.Linq;
 using System.Windows.Forms;

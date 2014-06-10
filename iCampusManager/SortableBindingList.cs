@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public class SortableBindingList<T> : BindingList<T>
     {

@@ -1,0 +1,4 @@
+﻿------ Build started: Project: DesktopLib, Configuration: Debug Any CPU ------
+------ Build started: Project: KHJHCentralOffice, Configuration: Debug Any CPU ------
+C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Common.targets(1605,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "MSIL" and the processor architecture of the reference "FISCA.Core", "x86". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.
+========== Build: 2 succeeded or up-to-date, 0 failed, 0 skipped ==========

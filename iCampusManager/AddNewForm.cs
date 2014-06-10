@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using FISCA.Data;
 using FISCA.Presentation.Controls;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class AddNewForm : BaseForm
     {

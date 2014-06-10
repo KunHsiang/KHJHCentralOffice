@@ -11,7 +11,7 @@ using FISCA.DSA;
 using FISCA;
 using DesktopLib;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class UDMItem : DetailContentImproved
     {

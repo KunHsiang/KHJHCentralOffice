@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using FISCA.Presentation.Controls;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class SimpleDefContent : BaseForm
     {

@@ -33,49 +33,54 @@
     <Reference Include="ActiproSoftware.Shared.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Common Files\Actipro Software\WindowsForms\Shared\v1.0.0093\ActiproSoftware.Shared.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.SyntaxEditor.Addons.Web.Net20, Version=4.0.262.0, Culture=neutral, PublicKeyToken=21a821480e210563, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Actipro Software\WindowsForms\SyntaxEditor\v4.0.0262\ActiproSoftware.SyntaxEditor.Addons.Web.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.SyntaxEditor.Net20, Version=4.0.283.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Actipro Software\WindowsForms\SyntaxEditor\v4.0.0262\ActiproSoftware.SyntaxEditor.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ActiproSoftware.WinUICore.Net20, Version=1.0.102.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\Common Files\Actipro Software\WindowsForms\WinUICore\v1.0.0093\ActiproSoftware.WinUICore.Net20.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Desktop\FiscaRuntime\components\DevComponents.DotNetBar2.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Authentication">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Authentication.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Authentication.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Data">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Data.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Data.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAClient">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.DSAClient.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.DSAClient.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAUtil">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.DSAUtil.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.DSAUtil.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Permission.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Permission.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Presentation">
-      <HintPath>..\..\..\Desktop\ischool desktop\kernel\FISCA.Presentation.dll</HintPath>
+      <HintPath>C:\ischool\kernel\FISCA.Presentation.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -84,7 +89,9 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>

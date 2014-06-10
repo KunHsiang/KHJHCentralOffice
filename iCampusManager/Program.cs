@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,12 +8,10 @@ using System.Xml;
 using DesktopLib;
 using FISCA;
 using FISCA.Authentication;
-using FISCA.Data;
-using FISCA.Permission.UI;
 using FISCA.Presentation;
 using FISCA.UDT;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public static class Program
     {
@@ -37,9 +33,6 @@ namespace iCampusManager
         {
             DSAServices.AutoDisplayLoadingMessageOnMotherForm();
 
-            if (DSAServices.AccessPoint.ToLower() != "campusman.ischool.com.tw")
-                throw new ApplicationStartupException("不支援，請登入 campusman.ischool.com.tw！");
-
             GlobalSchoolCache = new DynamicCache(); //建立一個空的快取。
 
             InitAsposeLicense();
@@ -56,8 +49,6 @@ namespace iCampusManager
             new DetailItems();
             new RibbonButtons();
             new ImportExport();//匯入學校資料
-
-
 
             RefreshFilteredSource();
 
@@ -175,7 +166,7 @@ namespace iCampusManager
             new Aspose.Cells.License().SetLicense(stream);
 
             stream.Seek(0, SeekOrigin.Begin);
-            new Aspose.Chart.License().SetLicense(stream);
+            //new Aspose.Chart.License().SetLicense(stream);
         }
 
         /// <summary>

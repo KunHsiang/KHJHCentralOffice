@@ -11,7 +11,7 @@ using System.Xml.Linq;
 using FISCA.DSA;
 using FISCA;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class StudentExchangeReset : DetailContentImproved
     {

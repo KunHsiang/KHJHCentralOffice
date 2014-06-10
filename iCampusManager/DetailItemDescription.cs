@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class DetailItemDescription : FISCA.Presentation.DescriptionPane
     {

@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iCampusManager", "iCampusManager\iCampusManager.csproj", "{C25C6DE8-29B6-4BD6-A8B3-F79C822191A0}"
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KHJHCentralOffice", "iCampusManager\KHJHCentralOffice.csproj", "{C25C6DE8-29B6-4BD6-A8B3-F79C822191A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopLib", "DesktopLib\DesktopLib.csproj", "{6511B475-96A3-4C16-9EF6-A1393896CAB4}"
 EndProject

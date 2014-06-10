@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using DesktopLib;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public partial class BasicInfoItem : DetailContentImproved
     {

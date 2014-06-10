@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     public class PropertyComparer<T> : IComparer<T>
     {

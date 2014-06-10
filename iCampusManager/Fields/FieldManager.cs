@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace iCampusManager
+namespace KHJHCentralOffice
 {
     internal class FieldManager
     {
@@ -16,9 +16,9 @@ namespace iCampusManager
         public FieldManager()
         {
 
-            TitleField = new iCampusManager.TitleField();
-            GroupField = new iCampusManager.GroupField();
-            DSNSField = new iCampusManager.DSNSField();
+            TitleField = new KHJHCentralOffice.TitleField();
+            GroupField = new KHJHCentralOffice.GroupField();
+            DSNSField = new KHJHCentralOffice.DSNSField();
 
             TitleField.Register(Program.MainPanel);
             DSNSField.Register(Program.MainPanel);
