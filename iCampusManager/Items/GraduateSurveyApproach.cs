@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using DesktopLib;
-using FISCA.DSA;
+using DevComponents.DotNetBar.Controls;
 using FISCA.UDT;
+using System.Xml.Linq;
+using System.IO;
+using FISCA.DSAClient;
+using System.Xml;
 
 namespace KHJHCentralOffice
 {
     public partial class GraduateSurveyApproach : DetailContentImproved
     {
-        private School SchoolData { get; set; }
+        private List<ApproachStatistics> ApproachSats { get; set; }
 
         private string PhysicalUrl { get; set; }
 
@@ -45,66 +51,76 @@ namespace KHJHCentralOffice
 
         protected override void OnPrimaryKeyChangedAsync()
         {
-            //AccessHelper access = new AccessHelper();
-            //List<School> schools = access.Select<School>(string.Format("uid='{0}'", PrimaryKey));
+            AccessHelper access = new AccessHelper();
+            ApproachSats = Utility.AccessHelper
+                .Select<ApproachStatistics>(string.Format("ref_school_id={0}", PrimaryKey));
 
-            //if (schools.Count > 0)
-            //    SchoolData = schools[0];
-            //else
-            //    SchoolData = null;
+            if (ApproachSats.Count > 0)
+            {
+                XElement elm = XElement.Load(ApproachSats[0].Content);
+            }
         }
 
-        private void ResolveUrl()
+        private void SetControl(int SchoolYear)
         {
-            PhysicalUrl = string.Empty;
-            if (SchoolData != null)
+            foreach (Control vControl in this.Controls)
             {
-                AccessPoint ap;
-                if (AccessPoint.TryParse(SchoolData.DSNS, out ap))
-                    PhysicalUrl = ap.Url;
+                if (vControl is TextBoxX)
+                {
+                    TextBoxX vTextBox = vControl as TextBoxX;
+                    vTextBox.Text = string.Empty;
+                }
+            }
+
+            for (int i = 0; i < cmbSurveyYear.Items.Count; i++)
+            {
+                if (cmbSurveyYear.Items[i].Equals(SchoolYear))
+                {
+                    cmbSurveyYear.SelectedIndex = i;
+                    break;
+                }
+            }
+
+            ApproachStatistics ApproachSat = ApproachSats
+                .Find(x => x.SurveyYear.Equals(SchoolYear));
+
+            if (ApproachSat != null)
+            {
+
             }
         }
 
         protected override void OnPrimaryKeyChangedComplete(Exception error)
         {
-            //if (SchoolData != null)
-            //{
-            //    BeginChangeControlData();
-            //    txtTitle.Text = SchoolData.Title;
-            //    txtDSNS.Text = SchoolData.DSNS;
-            //    txtGroup.Text = SchoolData.Group;
-            //    txtComment.Text = SchoolData.Comment;
-            //    txtPhysicalUrl.Text = "解析中...";
+            if (ApproachSats != null)
+            {
+                BeginChangeControlData();
 
-            //    Task task = Task.Factory.StartNew(() =>
-            //    {
-            //        ResolveUrl();
-            //    }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
+                List<int> SurveyYears = ApproachSats
+                    .Select(x => x.SurveyYear)
+                    .ToList();
 
-            //    task.ContinueWith(x =>
-            //    {
-            //        txtPhysicalUrl.Text = PhysicalUrl;
-            //    }, TaskScheduler.FromCurrentSynchronizationContext());
+                SurveyYears.ForEach(x => cmbSurveyYear.Items.Add(x));
 
-            //    ResetDirtyStatus();
-            //}
-            //else
-            //    throw new Exception("無查資料：" + PrimaryKey);
+                Task task = Task.Factory.StartNew(() =>
+                {
+                    //ResolveUrl();
+                }, CancellationToken.None, TaskCreationOptions.None, TaskScheduler.Default);
+
+                task.ContinueWith(x =>
+                {
+                    //txtPhysicalUrl.Text = PhysicalUrl;
+                }, TaskScheduler.FromCurrentSynchronizationContext());
+
+                ResetDirtyStatus();
+            }
+            else
+                throw new Exception("無查資料：" + PrimaryKey);
         }
 
         private void BasicInfoItem_Load(object sender, EventArgs e)
         {
             InitDetailContent();
-        }
-
-        private void textBoxX8_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelX5_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

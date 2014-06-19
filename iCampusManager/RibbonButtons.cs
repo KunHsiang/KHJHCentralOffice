@@ -35,6 +35,8 @@ namespace KHJHCentralOffice
                 }
             };
 
+
+
             //Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Image = Properties.Resources.lamp_search_128;
             //Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Size = RibbonBarButton.MenuButtonSize.Medium;
             //Program.MainPanel.RibbonBarItems["進階"]["搜尋"].Click += delegate

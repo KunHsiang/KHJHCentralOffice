@@ -31,6 +31,33 @@ namespace KHJHCentralOffice
         [MainMethod]
         public static void Main()
         {
+            #region 模組啟用先同步Schmea
+            //K12.Data.Configuration.ConfigData cd = K12.Data.School.Configuration["調代課UDT載入設定"];
+
+            //bool checkClubUDT = false;
+            //string name = "調代課UDT_20131008";
+
+            ////如果尚無設定值,預設為
+            //if (string.IsNullOrEmpty(cd[name]))
+            //{
+            //    cd[name] = "false";
+            //}
+            ////檢查是否為布林
+            //bool.TryParse(cd[name], out checkClubUDT);
+
+            //if (!checkClubUDT)
+            //{
+                SchemaManager Manager = new SchemaManager(FISCA.Authentication.DSAServices.DefaultConnection);
+
+                Manager.SyncSchema(new School());
+                Manager.SyncSchema(new ApproachStatistics());
+                Manager.SyncSchema(new VagrantStatistics());
+
+                //cd[name] = "true";
+                //cd.Save();
+            //}
+            #endregion
+
             DSAServices.AutoDisplayLoadingMessageOnMotherForm();
 
             GlobalSchoolCache = new DynamicCache(); //建立一個空的快取。
@@ -50,6 +77,14 @@ namespace KHJHCentralOffice
             new RibbonButtons();
             new ImportExport();//匯入學校資料
 
+            Program.MainPanel.RibbonBarItems["設定"]["開放時間"].Image = Properties.Resources.school_events_config_128;
+            Program.MainPanel.RibbonBarItems["設定"]["開放時間"].Size = RibbonBarButton.MenuButtonSize.Large;
+            Program.MainPanel.RibbonBarItems["設定"]["開放時間"].Click += (sender,e)=> new OpenTime().ShowDialog();
+
+            Program.MainPanel.RibbonBarItems["列印"]["畢業學生進路統計表"].Image = Properties.Resources.paste_64;
+            Program.MainPanel.RibbonBarItems["列印"]["畢業學生進路統計表"].Size = RibbonBarButton.MenuButtonSize.Large;
+            Program.MainPanel.RibbonBarItems["列印"]["畢業學生進路統計表"].Click += (sender, e) => new Approach_Report().ShowDialog();
+            
             RefreshFilteredSource();
 
             FISCA.Presentation.MotherForm.Form.Text = GetTitleText();
@@ -166,7 +201,7 @@ namespace KHJHCentralOffice
             new Aspose.Cells.License().SetLicense(stream);
 
             stream.Seek(0, SeekOrigin.Begin);
-            //new Aspose.Chart.License().SetLicense(stream);
+            new Aspose.Words.License().SetLicense(stream);
         }
 
         /// <summary>

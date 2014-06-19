@@ -63,6 +63,26 @@ namespace KHJHCentralOffice.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] _102學年度國中畢業學生進路調查填報表格 {
+            get {
+                object obj = ResourceManager.GetObject("_102學年度國中畢業學生進路調查填報表格", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] _102學年度國中畢業學生進路調查填報複核表 {
+            get {
+                object obj = ResourceManager.GetObject("_102學年度國中畢業學生進路調查填報複核表", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Aspose_Total {
             get {
                 object obj = ResourceManager.GetObject("Aspose_Total", resourceCulture);
@@ -136,6 +156,26 @@ namespace KHJHCentralOffice.Properties {
         internal static System.Drawing.Bitmap lamp_search_128 {
             get {
                 object obj = ResourceManager.GetObject("lamp_search_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap paste_64 {
+            get {
+                object obj = ResourceManager.GetObject("paste_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap school_events_config_128 {
+            get {
+                object obj = ResourceManager.GetObject("school_events_config_128", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
