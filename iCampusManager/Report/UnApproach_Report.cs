@@ -5,15 +5,17 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Aspose.Words;
 using FISCA.Presentation.Controls;
+using Aspose.Cells;
+using System.Xml.Linq;
 
 namespace KHJHCentralOffice
 {
-    public partial class Approach_Report : BaseForm
+    public partial class UnApproach_Report : BaseForm
     {
         private byte[] template;
         private string title;
-        
-        public Approach_Report(string title,byte[] template)
+
+        public UnApproach_Report(string title, byte[] template)
         {
             InitializeComponent();
 
@@ -40,26 +42,19 @@ namespace KHJHCentralOffice
             this.Close();
         }
 
-        private void MailMerge_MergeField(object sender, Aspose.Words.Reporting.MergeFieldEventArgs e)
-        {
-            #region 科目成績
-             
-            #endregion
-        }
-
         //報表產生完成後，儲存並且開啟
-        private void Completed(string inputReportName, Document inputDoc)
+        private void Completed(string inputReportName, Workbook inputDoc)
         {
             SaveFileDialog sd = new SaveFileDialog();
             sd.Title = "另存新檔";
-            sd.FileName = inputReportName + DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss") + ".doc";
-            sd.Filter = "Word檔案 (*.doc)|*.doc|所有檔案 (*.*)|*.*";
+            sd.FileName = inputReportName + DateTime.Now.ToString("yyyy-MM-dd_HH_mm_ss") + ".xls";
+            sd.Filter = "Excel檔案 (*.xls)|*.xls|所有檔案 (*.*)|*.*";
             sd.AddExtension = true;
             if (sd.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    inputDoc.Save(sd.FileName, Aspose.Words.SaveFormat.Doc);
+                    inputDoc.Save(sd.FileName);
                     System.Diagnostics.Process.Start(sd.FileName);
                 }
                 catch
@@ -77,28 +72,41 @@ namespace KHJHCentralOffice
             this.circularProgress.Visible = true;
             this.circularProgress.IsRunning = true;
 
-            Task<Document> task = Task<Document>.Factory.StartNew(() =>
+            Task<Workbook> task = Task<Workbook>.Factory.StartNew(() =>
             {
                 MemoryStream template = new MemoryStream(this.template);
-                Document doc = new Document();
-                Document dataDoc = new Document(template, "", LoadFormat.Doc, "");
-                dataDoc.MailMerge.MergeField += new Aspose.Words.Reporting.MergeFieldEventHandler(MailMerge_MergeField);
-                dataDoc.MailMerge.RemoveEmptyParagraphs = true;
-                doc.Sections.Clear();
-                List<string> keys = new List<string>();
-                List<object> values = new List<object>();
-                Dictionary<string, object> mergeKeyValue = ApproachStatisticsCalculator
-                    .Calculate(survey_year);
-               
-                foreach (string key in mergeKeyValue.Keys)
+
+                Workbook book = new Workbook();
+                book.Open(template);
+
+                List<ApproachStatistics> Records = Utility.AccessHelper
+                    .Select<ApproachStatistics>("survey_year=" + survey_year);
+
+                List<School> Schools = Utility.AccessHelper.Select<School>();
+
+                foreach (ApproachStatistics record in Records)
                 {
-                    keys.Add(key);
-                    values.Add(mergeKeyValue[key]);
+                    string SchoolName = string.Empty;
+                    XElement elmContent = XElement.Load(new StringReader(record.Content));
+                    int RowIndex = 1;
+
+                    School vSchool = Schools.Find(x => x.UID.Equals("" + record.RefSchoolID));
+
+                    if (vSchool != null)
+                        SchoolName = vSchool.Title;
+
+                    foreach (XElement elmStudent in elmContent.Element("UnApproachStudents").Elements("Student"))
+                    {
+                        book.Worksheets[0].Cells[RowIndex, 0].PutValue(SchoolName);
+                        book.Worksheets[0].Cells[RowIndex, 1].PutValue(elmStudent.Element("姓名").Value);
+                        book.Worksheets[0].Cells[RowIndex, 2].PutValue(elmStudent.Element("座號").Value);
+                        book.Worksheets[0].Cells[RowIndex, 3].PutValue(elmStudent.Element("未升學未就業動向").Value);
+                        book.Worksheets[0].Cells[RowIndex, 4].PutValue(elmStudent.Element("是否需要教育部協助").Value);
+                        RowIndex++;
+                    } 
                 }
-                
-                dataDoc.MailMerge.Execute(keys.ToArray(), values.ToArray());
-                doc.Sections.Add(doc.ImportNode(dataDoc.Sections[0], true));
-                return doc;
+
+                return book;
             });
             task.ContinueWith((x) =>
             {

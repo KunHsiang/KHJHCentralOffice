@@ -7,7 +7,7 @@ namespace KHJHCentralOffice
         public DetailItems()
         {
             Program.MainPanel.RegisterDetailContent<BasicInfoItem>();
-            Program.MainPanel.RegisterDetailContent<GraduateSurveyVagrant>();
+            //Program.MainPanel.RegisterDetailContent<GraduateSurveyVagrant>();
             Program.MainPanel.RegisterDetailContent<GraduateSurveyApproach>();
 
             //Program.MainPanel.RegisterDetailContent<NetworkItem>();

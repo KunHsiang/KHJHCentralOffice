@@ -30,7 +30,7 @@ namespace KHJHCentralOffice
         {
             WatchChange(new TextBoxSource(txtTitle));
             WatchChange(new TextBoxSource(txtDSNS));
-            WatchChange(new TextBoxSource(txtGroup));
+            WatchChange(new ComboBoxSource(cmbGroup, ComboBoxSource.ListenAttribute.SelectedIndex));
             WatchChange(new TextBoxSource(txtComment));
         }
 
@@ -40,7 +40,7 @@ namespace KHJHCentralOffice
             {
                 SchoolData.Title = txtTitle.Text;
                 SchoolData.DSNS = txtDSNS.Text;
-                SchoolData.Group = txtGroup.Text;
+                SchoolData.Group = "" + cmbGroup.SelectedItem;
                 SchoolData.Comment = txtComment.Text;
                 SchoolData.Save();
                 Program.RefreshFilteredSource();
@@ -78,7 +78,14 @@ namespace KHJHCentralOffice
                 BeginChangeControlData();
                 txtTitle.Text = SchoolData.Title;
                 txtDSNS.Text = SchoolData.DSNS;
-                txtGroup.Text = SchoolData.Group;
+
+                int SelectedIndex = -1;
+
+                for (int i = 0; i < cmbGroup.Items.Count; i++)
+                    if (cmbGroup.Items[i].ToString().Equals(SchoolData.Group))
+                        SelectedIndex = i;
+
+                cmbGroup.SelectedIndex = SelectedIndex;
                 txtComment.Text = SchoolData.Comment;
                 txtPhysicalUrl.Text = "解析中...";
 

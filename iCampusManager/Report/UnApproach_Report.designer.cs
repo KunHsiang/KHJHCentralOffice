@@ -1,6 +1,6 @@
 ﻿namespace KHJHCentralOffice
 {
-    partial class Approach_Report
+    partial class UnApproach_Report
     {
         /// <summary>
         /// Required designer variable.
@@ -105,7 +105,7 @@
             this.btnExit.Text = "離  開";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // Approach_Report
+            // UnApproach_Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -115,9 +115,9 @@
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.nudSchoolYear);
             this.Controls.Add(this.lblSchoolYear);
-            this.Name = "Approach_Report";
+            this.Name = "UnApproach_Report";
             this.Text = "";
-            this.TitleText = "畢業學生進路統計表";
+            this.TitleText = "國中華業未升學未就業學生動向";
             ((System.ComponentModel.ISupportInitialize)(this.nudSchoolYear)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

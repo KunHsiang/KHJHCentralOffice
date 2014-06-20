@@ -117,47 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Aspose_Total" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\aspose.total.lic;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="atom_down_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\atom_down_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="atom_up_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\atom_up_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Import_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\import.image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lamp_search_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lamp_search_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="atom_close_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\atom_close_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="atom_add_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\atom_add_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Export_Image" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Export.Image.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="school_events_config_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\school_events_config_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="paste_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\paste_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="school_search_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\school_search_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_102學年度國中畢業學生進路調查填報表格" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\102學年度國中畢業學生進路調查填報表格.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_102學年度國中畢業學生進路調查填報複核表" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\102學年度國中畢業學生進路調查填報複核表.doc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="國中畢業未升學未就業學生動向" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\國中畢業未升學未就業學生動向.xls;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
 </root>

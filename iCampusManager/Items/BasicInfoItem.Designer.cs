@@ -35,9 +35,12 @@
             this.txtComment = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtTitle = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.txtDSNS = new DevComponents.DotNetBar.Controls.TextBoxX();
-            this.txtGroup = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.txtPhysicalUrl = new DevComponents.DotNetBar.Controls.TextBoxX();
+            this.cmbGroup = new DevComponents.DotNetBar.Controls.ComboBoxEx();
+            this.comboItem1 = new DevComponents.Editors.ComboItem();
+            this.comboItem2 = new DevComponents.Editors.ComboItem();
+            this.comboItem3 = new DevComponents.Editors.ComboItem();
             this.SuspendLayout();
             // 
             // label1
@@ -133,18 +136,6 @@
             this.txtDSNS.Size = new System.Drawing.Size(188, 25);
             this.txtDSNS.TabIndex = 8;
             // 
-            // txtGroup
-            // 
-            // 
-            // 
-            // 
-            this.txtGroup.Border.Class = "TextBoxBorder";
-            this.txtGroup.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtGroup.Location = new System.Drawing.Point(65, 97);
-            this.txtGroup.Name = "txtGroup";
-            this.txtGroup.Size = new System.Drawing.Size(188, 25);
-            this.txtGroup.TabIndex = 8;
-            // 
             // labelX1
             // 
             this.labelX1.AutoSize = true;
@@ -172,12 +163,41 @@
             this.txtPhysicalUrl.Size = new System.Drawing.Size(472, 25);
             this.txtPhysicalUrl.TabIndex = 8;
             // 
+            // cmbGroup
+            // 
+            this.cmbGroup.DisplayMember = "Text";
+            this.cmbGroup.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cmbGroup.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGroup.FormattingEnabled = true;
+            this.cmbGroup.ItemHeight = 19;
+            this.cmbGroup.Items.AddRange(new object[] {
+            this.comboItem1,
+            this.comboItem2,
+            this.comboItem3});
+            this.cmbGroup.Location = new System.Drawing.Point(65, 95);
+            this.cmbGroup.Name = "cmbGroup";
+            this.cmbGroup.Size = new System.Drawing.Size(188, 25);
+            this.cmbGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.cmbGroup.TabIndex = 9;
+            // 
+            // comboItem1
+            // 
+            this.comboItem1.Text = "公立國中";
+            // 
+            // comboItem2
+            // 
+            this.comboItem2.Text = "私立國中";
+            // 
+            // comboItem3
+            // 
+            this.comboItem3.Text = "附設國中部";
+            // 
             // BasicInfoItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbGroup);
             this.Controls.Add(this.txtPhysicalUrl);
-            this.Controls.Add(this.txtGroup);
             this.Controls.Add(this.txtDSNS);
             this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.txtComment);
@@ -203,8 +223,11 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtComment;
         private DevComponents.DotNetBar.Controls.TextBoxX txtTitle;
         private DevComponents.DotNetBar.Controls.TextBoxX txtDSNS;
-        private DevComponents.DotNetBar.Controls.TextBoxX txtGroup;
         private DevComponents.DotNetBar.LabelX labelX1;
         private DevComponents.DotNetBar.Controls.TextBoxX txtPhysicalUrl;
+        private DevComponents.DotNetBar.Controls.ComboBoxEx cmbGroup;
+        private DevComponents.Editors.ComboItem comboItem1;
+        private DevComponents.Editors.ComboItem comboItem2;
+        private DevComponents.Editors.ComboItem comboItem3;
     }
 }
