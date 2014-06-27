@@ -19,6 +19,7 @@ namespace KHJHCentralOffice
 
             this.Load += new EventHandler(Form_Load);
             this.template = template;
+            this.title = title;
             this.TitleText = title;
 
             this.InitSchoolYear();

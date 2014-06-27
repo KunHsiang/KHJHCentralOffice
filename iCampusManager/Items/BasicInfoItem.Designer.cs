@@ -93,7 +93,7 @@
             // 
             this.label4.BackgroundStyle.Class = "";
             this.label4.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.label4.Location = new System.Drawing.Point(274, 19);
+            this.label4.Location = new System.Drawing.Point(268, 19);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(34, 21);
             this.label4.TabIndex = 6;
@@ -106,10 +106,10 @@
             // 
             this.txtComment.Border.Class = "TextBoxBorder";
             this.txtComment.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtComment.Location = new System.Drawing.Point(314, 8);
+            this.txtComment.Location = new System.Drawing.Point(314, 17);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(223, 112);
+            this.txtComment.Size = new System.Drawing.Size(223, 103);
             this.txtComment.TabIndex = 7;
             // 
             // txtTitle
@@ -133,6 +133,7 @@
             this.txtDSNS.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.txtDSNS.Location = new System.Drawing.Point(65, 57);
             this.txtDSNS.Name = "txtDSNS";
+            this.txtDSNS.ReadOnly = true;
             this.txtDSNS.Size = new System.Drawing.Size(188, 25);
             this.txtDSNS.TabIndex = 8;
             // 

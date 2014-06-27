@@ -13,7 +13,6 @@ namespace KHJHCentralOffice
     public partial class UnApproach_Report : BaseForm
     {
         private byte[] template;
-        private string title;
 
         public UnApproach_Report(string title, byte[] template)
         {
@@ -22,6 +21,7 @@ namespace KHJHCentralOffice
             this.Load += new EventHandler(Form_Load);
             this.template = template;
             this.TitleText = title;
+            this.Text = title;
 
             this.InitSchoolYear();
         }
@@ -82,6 +82,9 @@ namespace KHJHCentralOffice
                 List<ApproachStatistics> Records = Utility.AccessHelper
                     .Select<ApproachStatistics>("survey_year=" + survey_year);
 
+                if (Records.Count == 0)
+                    throw new Exception("本年度無填報資料。");
+
                 List<School> Schools = Utility.AccessHelper.Select<School>();
 
                 foreach (ApproachStatistics record in Records)
@@ -102,6 +105,8 @@ namespace KHJHCentralOffice
                         book.Worksheets[0].Cells[RowIndex, 2].PutValue(elmStudent.Element("座號").Value);
                         book.Worksheets[0].Cells[RowIndex, 3].PutValue(elmStudent.Element("未升學未就業動向").Value);
                         book.Worksheets[0].Cells[RowIndex, 4].PutValue(elmStudent.Element("是否需要教育部協助").Value);
+                        book.Worksheets[0].Cells[RowIndex, 5].PutValue(elmStudent.Element("備註").Value);
+
                         RowIndex++;
                     } 
                 }

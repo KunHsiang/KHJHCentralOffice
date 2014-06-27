@@ -157,6 +157,7 @@
       <DependentUpon>OpenTime.cs</DependentUpon>
     </Compile>
     <Compile Include="PropertyComparer.cs" />
+    <Compile Include="UDT\SchoolLog.cs" />
     <Compile Include="UnApproach_Check.cs">
       <SubType>Form</SubType>
     </Compile>

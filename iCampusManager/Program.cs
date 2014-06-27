@@ -47,11 +47,15 @@ namespace KHJHCentralOffice
 
             //if (!checkClubUDT)
             //{
-                SchemaManager Manager = new SchemaManager(FISCA.Authentication.DSAServices.DefaultConnection);
 
-                Manager.SyncSchema(new School());
-                Manager.SyncSchema(new ApproachStatistics());
-                Manager.SyncSchema(new VagrantStatistics());
+            ServerModule.AutoManaged("http://module.ischool.com.tw/module/89/KHCentralOffice/udm.xml");
+
+            SchemaManager Manager = new SchemaManager(FISCA.Authentication.DSAServices.DefaultConnection);
+
+            Manager.SyncSchema(new School());
+            Manager.SyncSchema(new ApproachStatistics());
+            Manager.SyncSchema(new VagrantStatistics());
+            Manager.SyncSchema(new SchoolLog());
 
                 //cd[name] = "true";
                 //cd.Save();
@@ -67,30 +71,30 @@ namespace KHJHCentralOffice
             InitConfigurationStorage();
             InitMainPanel();
 
-            MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Click += delegate
-            {
-                new ExportQueryData().Export();
-            };
+            //MainPanel.ListPaneContexMenu["執行 SQL 並匯出"].Click += delegate
+            //{
+            //    new ExportQueryData().Export();
+            //};
 
             new FieldManager();
             new DetailItems();
-            new RibbonButtons();
+            //new RibbonButtons();
             //new ImportExport();//匯入學校資料
 
-            Program.MainPanel.RibbonBarItems["設定"]["開放時間"].Image = Properties.Resources.school_events_config_128;
-            Program.MainPanel.RibbonBarItems["設定"]["開放時間"].Size = RibbonBarButton.MenuButtonSize.Large;
-            Program.MainPanel.RibbonBarItems["設定"]["開放時間"].Click += (sender,e)=> new OpenTime().ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Image = Properties.Resources.school_events_config_128;
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Click += (sender, e) => new OpenTime().ShowDialog();
 
-            Program.MainPanel.RibbonBarItems["列印"]["報表"].Image = Properties.Resources.paste_64;
-            Program.MainPanel.RibbonBarItems["列印"]["報表"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            
-            Program.MainPanel.RibbonBarItems["列印"]["報表"]["畢業學生進路統計表"].Click += (sender, e) => new Approach_Report("國中畢業學生進路調查填報表格",Properties.Resources._102學年度國中畢業學生進路調查填報表格).ShowDialog();
-            Program.MainPanel.RibbonBarItems["列印"]["報表"]["畢業學生進路複核表"].Click += (sender, e) => new Approach_Report("國中畢業學生進路調查填報複核表", Properties.Resources._102學年度國中畢業學生進路調查填報複核表).ShowDialog();
-            Program.MainPanel.RibbonBarItems["列印"]["報表"]["畢業未升學未就業學生動向"].Click += (sender, e) => new UnApproach_Report("國中畢業未升學未就業學生動向", Properties.Resources.國中畢業未升學未就業學生動向).ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"].Image = Properties.Resources.paste_64;
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"].Size = RibbonBarButton.MenuButtonSize.Medium;
 
-            Program.MainPanel.RibbonBarItems["檢查"]["未上傳學校"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            Program.MainPanel.RibbonBarItems["檢查"]["未上傳學校"].Image = Properties.Resources.school_search_128;
-            Program.MainPanel.RibbonBarItems["檢查"]["未上傳學校"].Click += (sender, e) => new UnApproach_Check().ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業學生進路統計表"].Click += (sender, e) => new Approach_Report("國中畢業學生進路調查填報表格", Properties.Resources._102學年度國中畢業學生進路調查填報表格).ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業學生進路複核表"].Click += (sender, e) => new Approach_Report("國中畢業學生進路調查填報複核表", Properties.Resources._102學年度國中畢業學生進路調查填報複核表).ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業未升學未就業學生動向"].Click += (sender, e) => new UnApproach_Report("國中畢業未升學未就業學生動向", Properties.Resources.國中畢業未升學未就業學生動向).ShowDialog();
+
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Image = Properties.Resources.school_search_128;
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Click += (sender, e) => new UnApproach_Check().ShowDialog();
 
             RefreshFilteredSource();
 

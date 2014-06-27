@@ -116,7 +116,7 @@
             this.Controls.Add(this.nudSchoolYear);
             this.Controls.Add(this.lblSchoolYear);
             this.Name = "Approach_Report";
-            this.Text = "";
+            this.Text = "畢業學生進路統計表";
             this.TitleText = "畢業學生進路統計表";
             ((System.ComponentModel.ISupportInitialize)(this.nudSchoolYear)).EndInit();
             this.ResumeLayout(false);

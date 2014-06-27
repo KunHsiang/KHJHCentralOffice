@@ -138,25 +138,25 @@ namespace KHJHCentralOffice
             #endregion
 
             #region 全縣市畢業學生升學之就讀學校情形
-            mergeKeyValue.Add("A3", A2_sum);
+            mergeKeyValue.Add("A3", A3_sum);
 
-            mergeKeyValue.Add("B3", B2_sum);
-            mergeKeyValue.Add("C3", C2_sum);
-            mergeKeyValue.Add("D3", D2_sum);
+            mergeKeyValue.Add("B3", B3_sum);
+            mergeKeyValue.Add("C3", C3_sum);
+            mergeKeyValue.Add("D3", D3_sum);
             mergeKeyValue.Add("E3", E3_sum);
             mergeKeyValue.Add("F3", F3_sum);
             mergeKeyValue.Add("G3", G3_sum);
             mergeKeyValue.Add("H3", H3_sum);
             mergeKeyValue.Add("I3", I3_sum);
 
-            mergeKeyValue.Add("B3/A3", A3_sum > 0 ? Math.Round(B3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("C3/A3", A3_sum > 0 ? Math.Round(C3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("D3/A3", A3_sum > 0 ? Math.Round(D3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("E3/A3", A3_sum > 0 ? Math.Round(E3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("F3/A3", A3_sum > 0 ? Math.Round(F3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("G3/A3", A3_sum > 0 ? Math.Round(G3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("H3/A3", A3_sum > 0 ? Math.Round(H3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("I3/A3", A3_sum > 0 ? Math.Round(I3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("B3/A3", B3_sum > 0 ? Math.Round(B3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("C3/A3", C3_sum > 0 ? Math.Round(C3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("D3/A3", D3_sum > 0 ? Math.Round(D3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("E3/A3", E3_sum > 0 ? Math.Round(E3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("F3/A3", F3_sum > 0 ? Math.Round(F3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("G3/A3", G3_sum > 0 ? Math.Round(G3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("H3/A3", H3_sum > 0 ? Math.Round(H3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("I3/A3", I3_sum > 0 ? Math.Round(I3_sum * 100 / A3_sum, 2, MidpointRounding.AwayFromZero) : 0);
             #endregion
 
             #region 全縣市畢業學生升學就讀學校之學制別
@@ -170,7 +170,7 @@ namespace KHJHCentralOffice
             mergeKeyValue.Add("G4", G4_sum);
             mergeKeyValue.Add("H4", H4_sum);
             mergeKeyValue.Add("I4", I4_sum);
-            mergeKeyValue.Add("J4", I4_sum);
+            mergeKeyValue.Add("J4", J4_sum);
 
             mergeKeyValue.Add("B4/A4", A4_sum > 0 ? Math.Round(B4_sum * 100 / A4_sum, 2, MidpointRounding.AwayFromZero) : 0);
             mergeKeyValue.Add("C4/A4", A4_sum > 0 ? Math.Round(C4_sum * 100 / A4_sum, 2, MidpointRounding.AwayFromZero) : 0);
@@ -180,6 +180,7 @@ namespace KHJHCentralOffice
             mergeKeyValue.Add("G4/A4", A4_sum > 0 ? Math.Round(G4_sum * 100 / A4_sum, 2, MidpointRounding.AwayFromZero) : 0);
             mergeKeyValue.Add("H4/A4", A4_sum > 0 ? Math.Round(H4_sum * 100 / A4_sum, 2, MidpointRounding.AwayFromZero) : 0);
             mergeKeyValue.Add("I4/A4", A4_sum > 0 ? Math.Round(I4_sum * 100 / A4_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("J4/A4", A4_sum > 0 ? Math.Round(J4_sum * 100 / A4_sum, 2, MidpointRounding.AwayFromZero) : 0);
             #endregion
 
             #region 全縣市畢業學生升學之入學方式情形
@@ -195,15 +196,15 @@ namespace KHJHCentralOffice
             mergeKeyValue.Add("I5", I5_sum);
             mergeKeyValue.Add("J5", J5_sum);
 
-            mergeKeyValue.Add("K5", B5_sum);
-            mergeKeyValue.Add("L5", C5_sum);
-            mergeKeyValue.Add("M5", D5_sum);
-            mergeKeyValue.Add("N5", E5_sum);
-            mergeKeyValue.Add("O5", F5_sum);
-            mergeKeyValue.Add("P5", G5_sum);
-            mergeKeyValue.Add("Q5", H5_sum);
-            mergeKeyValue.Add("R5", I5_sum);
-            mergeKeyValue.Add("S5", J5_sum);
+            mergeKeyValue.Add("K5", K5_sum);
+            mergeKeyValue.Add("L5", L5_sum);
+            mergeKeyValue.Add("M5", M5_sum);
+            mergeKeyValue.Add("N5", N5_sum);
+            mergeKeyValue.Add("O5", O5_sum);
+            mergeKeyValue.Add("P5", P5_sum);
+            mergeKeyValue.Add("Q5", Q5_sum);
+            mergeKeyValue.Add("R5", R5_sum);
+            mergeKeyValue.Add("S5", S5_sum);
 
             mergeKeyValue.Add("B5/A5", A5_sum > 0 ? Math.Round(B5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
             mergeKeyValue.Add("C5/A5", A5_sum > 0 ? Math.Round(C5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
@@ -215,15 +216,15 @@ namespace KHJHCentralOffice
             mergeKeyValue.Add("I5/A5", A5_sum > 0 ? Math.Round(I5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
             mergeKeyValue.Add("J5/A5", A5_sum > 0 ? Math.Round(J5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
 
-            mergeKeyValue.Add("K5/A5", A5_sum > 0 ? Math.Round(B5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("L5/A5", A5_sum > 0 ? Math.Round(C5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("M5/A5", A5_sum > 0 ? Math.Round(D5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("N5/A5", A5_sum > 0 ? Math.Round(E5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("O5/A5", A5_sum > 0 ? Math.Round(F5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("P5/A5", A5_sum > 0 ? Math.Round(G5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("Q5/A5", A5_sum > 0 ? Math.Round(H5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("R5/A5", A5_sum > 0 ? Math.Round(I5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
-            mergeKeyValue.Add("S5/A5", A5_sum > 0 ? Math.Round(J5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("K5/A5", A5_sum > 0 ? Math.Round(K5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("L5/A5", A5_sum > 0 ? Math.Round(L5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("M5/A5", A5_sum > 0 ? Math.Round(M5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("N5/A5", A5_sum > 0 ? Math.Round(N5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("O5/A5", A5_sum > 0 ? Math.Round(O5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("P5/A5", A5_sum > 0 ? Math.Round(P5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("Q5/A5", A5_sum > 0 ? Math.Round(Q5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("R5/A5", A5_sum > 0 ? Math.Round(R5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
+            mergeKeyValue.Add("S5/A5", A5_sum > 0 ? Math.Round(S5_sum * 100 / A5_sum, 2, MidpointRounding.AwayFromZero) : 0);
             #endregion
 
             return mergeKeyValue;

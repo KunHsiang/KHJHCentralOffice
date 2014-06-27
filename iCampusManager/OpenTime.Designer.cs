@@ -66,7 +66,7 @@
             // 
             // grdOpenDate
             // 
-            this.grdOpenDate.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.grdOpenDate.BackgroundColor = System.Drawing.Color.White;
             this.grdOpenDate.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdOpenDate.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colSurveyYear,

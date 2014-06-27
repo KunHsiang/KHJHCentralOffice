@@ -116,7 +116,7 @@
             this.Controls.Add(this.nudSchoolYear);
             this.Controls.Add(this.lblSchoolYear);
             this.Name = "UnApproach_Report";
-            this.Text = "";
+            this.Text = "國中華業未升學未就業學生動向";
             this.TitleText = "國中華業未升學未就業學生動向";
             ((System.ComponentModel.ISupportInitialize)(this.nudSchoolYear)).EndInit();
             this.ResumeLayout(false);
