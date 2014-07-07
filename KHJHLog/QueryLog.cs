@@ -240,5 +240,15 @@ namespace KHJHLog
                 Item.Checked = chkSelectAll.Checked;
             }
         }
+
+        private void grdLog_DoubleClick(object sender, EventArgs e)
+        {
+            if (grdLog.SelectedCells.Count == 1)
+            {
+                frmDetailLog DetailLog = new frmDetailLog(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]);
+
+                DetailLog.ShowDialog();
+            }
+        }
     }
 }

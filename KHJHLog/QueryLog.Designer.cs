@@ -28,13 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdLog = new DevComponents.DotNetBar.Controls.DataGridViewX();
+            this.colID = new DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSchool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colVerify = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
+            this.colComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnExport = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
@@ -44,19 +51,12 @@
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.btnQuery = new DevComponents.DotNetBar.ButtonX();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
+            this.txtPassword = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX4 = new DevComponents.DotNetBar.LabelX();
             this.groupPanel3 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.dateTimeInput3 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.lstAction = new DevComponents.DotNetBar.Controls.ListViewEx();
-            this.colID = new DevComponents.DotNetBar.Controls.DataGridViewLabelXColumn();
-            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSchool = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colContent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colVerify = new DevComponents.DotNetBar.Controls.DataGridViewCheckBoxXColumn();
-            this.colComment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateTimeInput3 = new DevComponents.Editors.DateTimeAdv.DateTimeInput();
             this.labelX5 = new DevComponents.DotNetBar.LabelX();
-            this.txtPassword = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.chkSelectAll = new DevComponents.DotNetBar.Controls.CheckBoxX();
             ((System.ComponentModel.ISupportInitialize)(this.grdLog)).BeginInit();
             this.groupPanel1.SuspendLayout();
@@ -85,14 +85,14 @@
             this.colContent,
             this.colVerify,
             this.colComment});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdLog.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdLog.DefaultCellStyle = dataGridViewCellStyle6;
             this.grdLog.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
             this.grdLog.Location = new System.Drawing.Point(15, 190);
             this.grdLog.Name = "grdLog";
@@ -100,6 +100,69 @@
             this.grdLog.Size = new System.Drawing.Size(849, 329);
             this.grdLog.TabIndex = 0;
             this.grdLog.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.grdLog_CellEndEdit);
+            this.grdLog.DoubleClick += new System.EventHandler(this.grdLog_DoubleClick);
+            // 
+            // colID
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colID.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colID.HeaderText = "系統編號";
+            this.colID.Name = "colID";
+            this.colID.ReadOnly = true;
+            this.colID.Visible = false;
+            // 
+            // colDate
+            // 
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colDate.HeaderText = "日期";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            // 
+            // colSchool
+            // 
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colSchool.DefaultCellStyle = dataGridViewCellStyle3;
+            this.colSchool.HeaderText = "學校";
+            this.colSchool.Name = "colSchool";
+            this.colSchool.ReadOnly = true;
+            // 
+            // colAction
+            // 
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colAction.DefaultCellStyle = dataGridViewCellStyle4;
+            this.colAction.HeaderText = "動作";
+            this.colAction.Name = "colAction";
+            this.colAction.ReadOnly = true;
+            // 
+            // colContent
+            // 
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.colContent.DefaultCellStyle = dataGridViewCellStyle5;
+            this.colContent.HeaderText = "學校端內容";
+            this.colContent.MinimumWidth = 200;
+            this.colContent.Name = "colContent";
+            this.colContent.ReadOnly = true;
+            this.colContent.Width = 300;
+            // 
+            // colVerify
+            // 
+            this.colVerify.Checked = true;
+            this.colVerify.CheckState = System.Windows.Forms.CheckState.Indeterminate;
+            this.colVerify.CheckValue = "N";
+            this.colVerify.HeaderText = "審查不通過";
+            this.colVerify.Name = "colVerify";
+            this.colVerify.ReadOnly = true;
+            // 
+            // colComment
+            // 
+            this.colComment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colComment.HeaderText = "局端備註";
+            this.colComment.MinimumWidth = 200;
+            this.colComment.Name = "colComment";
+            this.colComment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colComment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // btnExport
             // 
@@ -362,6 +425,18 @@
             this.groupPanel2.TabIndex = 5;
             this.groupPanel2.Text = "篩選學校或學校端內容";
             // 
+            // txtPassword
+            // 
+            // 
+            // 
+            // 
+            this.txtPassword.Border.Class = "TextBoxBorder";
+            this.txtPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.txtPassword.Location = new System.Drawing.Point(90, 8);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(338, 25);
+            this.txtPassword.TabIndex = 1;
+            // 
             // labelX4
             // 
             // 
@@ -419,6 +494,21 @@
             this.groupPanel3.TabIndex = 6;
             this.groupPanel3.Text = "篩選動作";
             // 
+            // lstAction
+            // 
+            // 
+            // 
+            // 
+            this.lstAction.Border.Class = "ListViewBorder";
+            this.lstAction.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lstAction.CheckBoxes = true;
+            this.lstAction.Location = new System.Drawing.Point(12, 7);
+            this.lstAction.Name = "lstAction";
+            this.lstAction.Size = new System.Drawing.Size(248, 107);
+            this.lstAction.TabIndex = 6;
+            this.lstAction.UseCompatibleStateImageBehavior = false;
+            this.lstAction.View = System.Windows.Forms.View.List;
+            // 
             // dateTimeInput3
             // 
             // 
@@ -470,83 +560,6 @@
             this.dateTimeInput3.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.dateTimeInput3.TabIndex = 5;
             // 
-            // lstAction
-            // 
-            // 
-            // 
-            // 
-            this.lstAction.Border.Class = "ListViewBorder";
-            this.lstAction.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.lstAction.CheckBoxes = true;
-            this.lstAction.Location = new System.Drawing.Point(12, 7);
-            this.lstAction.Name = "lstAction";
-            this.lstAction.Size = new System.Drawing.Size(248, 107);
-            this.lstAction.TabIndex = 6;
-            this.lstAction.UseCompatibleStateImageBehavior = false;
-            this.lstAction.View = System.Windows.Forms.View.List;
-            // 
-            // colID
-            // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colID.DefaultCellStyle = dataGridViewCellStyle13;
-            this.colID.HeaderText = "系統編號";
-            this.colID.Name = "colID";
-            this.colID.ReadOnly = true;
-            this.colID.Visible = false;
-            // 
-            // colDate
-            // 
-            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colDate.DefaultCellStyle = dataGridViewCellStyle14;
-            this.colDate.HeaderText = "日期";
-            this.colDate.Name = "colDate";
-            this.colDate.ReadOnly = true;
-            // 
-            // colSchool
-            // 
-            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colSchool.DefaultCellStyle = dataGridViewCellStyle15;
-            this.colSchool.HeaderText = "學校";
-            this.colSchool.Name = "colSchool";
-            this.colSchool.ReadOnly = true;
-            // 
-            // colAction
-            // 
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colAction.DefaultCellStyle = dataGridViewCellStyle16;
-            this.colAction.HeaderText = "動作";
-            this.colAction.Name = "colAction";
-            this.colAction.ReadOnly = true;
-            // 
-            // colContent
-            // 
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.colContent.DefaultCellStyle = dataGridViewCellStyle17;
-            this.colContent.HeaderText = "學校端內容";
-            this.colContent.MinimumWidth = 200;
-            this.colContent.Name = "colContent";
-            this.colContent.ReadOnly = true;
-            this.colContent.Width = 300;
-            // 
-            // colVerify
-            // 
-            this.colVerify.Checked = true;
-            this.colVerify.CheckState = System.Windows.Forms.CheckState.Indeterminate;
-            this.colVerify.CheckValue = "N";
-            this.colVerify.HeaderText = "審查不通過";
-            this.colVerify.Name = "colVerify";
-            this.colVerify.ReadOnly = true;
-            // 
-            // colComment
-            // 
-            this.colComment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colComment.HeaderText = "局端備註";
-            this.colComment.MinimumWidth = 200;
-            this.colComment.Name = "colComment";
-            this.colComment.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colComment.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
             // labelX5
             // 
             this.labelX5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -561,18 +574,6 @@
             this.labelX5.Size = new System.Drawing.Size(75, 23);
             this.labelX5.TabIndex = 7;
             this.labelX5.Text = "操作說明：";
-            // 
-            // txtPassword
-            // 
-            // 
-            // 
-            // 
-            this.txtPassword.Border.Class = "TextBoxBorder";
-            this.txtPassword.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtPassword.Location = new System.Drawing.Point(90, 8);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(338, 25);
-            this.txtPassword.TabIndex = 1;
             // 
             // chkSelectAll
             // 
