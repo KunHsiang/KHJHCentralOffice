@@ -19,6 +19,12 @@ namespace KHJHLog
         [MainMethod]
         public static void Main()
         {
+            Campus.Configuration.Config.Initialize(
+                new Campus.Configuration.UserConfigManager(new Campus.Configuration.ConfigProvider_User(), FISCA.Authentication.DSAServices.UserAccount),
+                new Campus.Configuration.ConfigurationManager(new Campus.Configuration.ConfigProvider_App()),
+                new Campus.Configuration.ConfigurationManager(new Campus.Configuration.ConfigProvider_Global())
+            );
+
             InitMainPanel();
 
             SchemaManager Manager = new SchemaManager(FISCA.Authentication.DSAServices.DefaultConnection);
@@ -28,6 +34,10 @@ namespace KHJHLog
             MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Image = Properties.Resources.admissions_search_128;
             MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Size = RibbonBarButton.MenuButtonSize.Medium;
             MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Click += (sender, e) => new QueryLog().ShowDialog();
+
+            //FISCA.Permission.UI.UserManager vUser = new FISCA.Permission.UI.UserManager();
+
+            //vUser.ShowDialog();
         }
 
         private static void InitMainPanel()

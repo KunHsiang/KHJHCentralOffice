@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopLib", "DesktopLib\De
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KHJHLog", "KHJHLog\KHJHLog.csproj", "{789AA25F-3A10-4727-A1AC-EC9EC0C2BDC3}"
 EndProject
+Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "KHUML", "KHUML\KHUML.modelproj", "{0BBF76CA-386A-4C51-B692-B9E8216767F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{789AA25F-3A10-4727-A1AC-EC9EC0C2BDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{789AA25F-3A10-4727-A1AC-EC9EC0C2BDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{789AA25F-3A10-4727-A1AC-EC9EC0C2BDC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBF76CA-386A-4C51-B692-B9E8216767F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBF76CA-386A-4C51-B692-B9E8216767F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBF76CA-386A-4C51-B692-B9E8216767F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBF76CA-386A-4C51-B692-B9E8216767F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Campus.Configuration;
 using FISCA.Data;
-using FISCA.Deployment;
 using FISCA.Presentation;
 using FISCA.UDT;
 using KHJHCentralOffice;
@@ -19,8 +16,10 @@ namespace KHJHLog
 {
     public partial class QueryLog : FISCA.Presentation.Controls.BaseForm
     {
-        AccessHelper accesshelper = new AccessHelper();
-        QueryHelper queryhelper = new QueryHelper();
+        private List<string> VerifyActions = new List<string>() { "匯入更新班級", "調整班級", "變更特殊身分", "鎖定班級" };
+        private AccessHelper accesshelper = new AccessHelper();
+        private QueryHelper queryhelper = new QueryHelper();
+        private ConfigData config = Campus.Configuration.Config.User["Option"];
 
         public QueryLog()
         {
@@ -32,12 +31,21 @@ namespace KHJHLog
 
         }
 
-        private string GetContentFormat(string Action,string Content)
+        private string GetContentFormat(string Action, string Content)
         {
-            return Content;
+            //return Content;
 
             StringBuilder strBuilder = new StringBuilder();
-            XElement elmContent = XElement.Load(new StringReader(Content));
+            XElement elmContent;
+
+            try
+            {
+                elmContent = XElement.Load(new StringReader("<root>" + Content + "</root>"));
+            }
+            catch
+            {
+                return Content;
+            }
 
             if (Action.Equals("特殊轉入"))
             {
@@ -56,8 +64,8 @@ namespace KHJHLog
                 strBuilder.AppendLine("學生姓名：" + elmContent.Element("StudentName").Value);
 
                 return strBuilder.ToString();
-             }
-            else if (Action.Equals("轉班"))
+            }
+            else if (Action.Equals("班級調整"))
             {
                 //轉班
                 //  <Content>
@@ -70,9 +78,10 @@ namespace KHJHLog
                 //       <Reason> </Reason>
                 //  </Content>
 
-                return strBuilder.ToString();
+                return string.Format("學生「{0}」從「{1}」調整班級到「{2}」",
+                    elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName"));
             }
-            else if (Action.Equals("鎖定／解除鎖定班級"))
+            else if (Action.Equals("鎖定班級") || Action.Equals("解鎖班級"))
             {
                 //鎖定／解除鎖定班級
                 // <Content>
@@ -81,12 +90,12 @@ namespace KHJHLog
                 //      <Reason></Reason>
                 // </Content>
 
-                strBuilder.AppendLine(
-                    "班級名稱「" + elmContent.ElementText("ClassName") + 
-                    "」年級「" + elmContent.ElementText("GradeYear") +
-                    "」原因「" + elmContent.ElementText("Reason") + "」");
+                //strBuilder.AppendLine(
+                //    "班級名稱「" + elmContent.ElementText("ClassName") +
+                //    "」年級「" + elmContent.ElementText("GradeYear") +
+                //    "」原因「" + elmContent.ElementText("Reason") + "」");
 
-                return strBuilder.ToString();
+                return string.Format("班級：{0}", elmContent.ElementText("ClassName"));
             }
             else
                 return Content;
@@ -94,11 +103,40 @@ namespace KHJHLog
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            string StartDate = dateStart.Value.ToShortDateString();
+
+            config["start_date"] = StartDate;
+
+            config.SaveAsync();
+
             grdLog.Rows.Clear();
+
+            List<string> SelectedActions = new List<string>();
+
+            foreach (ListViewItem Item in lstAction.Items)
+            {
+                if (Item.Checked)
+                {
+                    SelectedActions.Add(Item.Name);
+                }
+            }           
 
             string strStartDate = dateStart.Value.ToShortDateString();
             string strEndDate = dateEnd.Value.ToShortDateString();
-            string strSQL = "select uid,date_time,dsns,action,content,read,comment from $school_log where date_time>='" + strStartDate + " 00:00:00' and date_time<='" + strEndDate + " 23:59:59' order by date_time desc";
+
+            StringBuilder strSQLBuilder = new StringBuilder();
+
+            strSQLBuilder.Append("select uid,date_time,dsns,action,content,read,comment from $school_log where date_time>='" + strStartDate + " 00:00:00' and date_time<='" + strEndDate + " 23:59:59'");
+
+            if (SelectedActions.Count > 0)
+            {
+                string strCondition = string.Join(",", SelectedActions.Select(x => "'" + x + "'").ToArray());
+                strSQLBuilder.Append(" and action in (" + strCondition +")");
+            }
+             
+            strSQLBuilder.Append(" order by date_time desc");
+
+            string strSQL = strSQLBuilder.ToString();
 
             DataTable tblSchoolLog = queryhelper.Select(strSQL);
             List<School> Schools = accesshelper.Select<School>();
@@ -114,16 +152,16 @@ namespace KHJHLog
                 string Comment = row.Field<string>("comment");
 
                 School vSchool = Schools
-                    .Find(x=>x.DSNS.Equals(DSNS));
+                    .Find(x => x.DSNS.Equals(DSNS));
 
                 string SchoolName = vSchool != null ? vSchool.Title : DSNS;
 
-                grdLog.Rows.Add(
+                int RowIndex = grdLog.Rows.Add(
                     UID,
                     Date,
                     SchoolName,
-                    Action, 
-                    Content , 
+                    Action,
+                    Content,
                     Read,
                     Comment);
             }
@@ -131,8 +169,33 @@ namespace KHJHLog
 
         private void QueryLog_Load(object sender, EventArgs e)
         {
-            dateStart.Value = DateTime.Today.AddDays(-7);
+            DateTime dteStart = DateTime.Today.AddDays(-7);
+            dateStart.Value = dteStart;
             dateEnd.Value = DateTime.Today;
+
+            string StartDate = config["start_date"];
+
+            if (!string.IsNullOrWhiteSpace(StartDate))
+            {
+                DateTime.TryParse(StartDate, out dteStart);
+                dateStart.Value = dteStart;
+            }
+
+            DataTable tblAction = queryhelper.Select("select distinct action from $school_log");
+
+            List<string> Actions = new List<string>();
+
+            lstAction.Items.Clear();
+
+            foreach (DataRow row in tblAction.Rows)
+            {
+                string Action = row.Field<string>("action");
+
+                ListViewItem vItem = new ListViewItem();
+                vItem.Name = Action;
+                vItem.Text = VerifyActions.Contains(Action)? Action + "（需審核）" : Action;
+                lstAction.Items.Add(vItem);
+            }
         }
 
         private void grdLog_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -155,8 +218,26 @@ namespace KHJHLog
                 }
                 catch (Exception ve)
                 {
-                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine  + ve.Message);
+                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
                 }
+            }
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            grdLog.Export("自動編班查詢記錄");
+        }
+
+        private void chkSelectAll_CheckedChanged(object sender, EventArgs e)
+        {
+            foreach (ListViewItem Item in lstAction.Items)
+            {
+                Item.Checked = chkSelectAll.Checked;
             }
         }
     }

@@ -30,6 +30,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Cells, Version=4.3.0.0, Culture=neutral, PublicKeyToken=9a40d5a4b59e5256, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\ischool\modules\Campus\Aspose.Cells.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Campus.Configuration">
+      <HintPath>C:\ischool\modules\Campus\Campus.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Campus.Report">
+      <HintPath>C:\ischool\modules\Campus\Campus.Report.dll</HintPath>
+    </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\ischool\components\DevComponents.DotNetBar2.dll</HintPath>
@@ -48,6 +60,7 @@
     </Reference>
     <Reference Include="FISCA.Data">
       <HintPath>C:\ischool\kernel\FISCA.Data.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAClient">
       <HintPath>C:\ischool\kernel\FISCA.DSAClient.dll</HintPath>
@@ -60,6 +73,9 @@
     <Reference Include="FISCA.LogAgent">
       <HintPath>C:\ischool\kernel\FISCA.LogAgent.dll</HintPath>
       <Private>False</Private>
+    </Reference>
+    <Reference Include="FISCA.Permission">
+      <HintPath>C:\ischool\kernel\FISCA.Permission.dll</HintPath>
     </Reference>
     <Reference Include="FISCA.Presentation">
       <HintPath>C:\ischool\kernel\FISCA.Presentation.dll</HintPath>
@@ -80,6 +96,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGridViewExport.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueryLog.cs">
