@@ -4,6 +4,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Campus.Configuration;
@@ -160,7 +161,7 @@ namespace KHJHLog
 
             StringBuilder strSQLBuilder = new StringBuilder();
 
-            strSQLBuilder.Append("select uid,date_time,dsns,action,content,read,comment from $school_log where date_time>='" + strStartDate + " 00:00:00' and date_time<='" + strEndDate + " 23:59:59'");
+            strSQLBuilder.Append("select uid,date_time,dsns,action,content,verify,comment from $school_log where date_time>='" + strStartDate + " 00:00:00' and date_time<='" + strEndDate + " 23:59:59'");
 
             if (SelectedActions.Count > 0)
             {
@@ -182,7 +183,12 @@ namespace KHJHLog
                 string DSNS = row.Field<string>("dsns");
                 string Action = row.Field<string>("action");
                 string Content = GetContentFormat(Action, row.Field<string>("content"));
-                string Read = row.Field<string>("read");
+                string strVerify = row.Field<string>("verify");
+                bool Verify = false;
+                
+                if (row.Field<string>("verify").ToLower().Equals("false"))
+                    Verify = true;
+
                 string Comment = row.Field<string>("comment");
 
                 School vSchool = Schools
@@ -201,7 +207,7 @@ namespace KHJHLog
                         SchoolName,
                         Action,
                         Content,
-                        Read,
+                        Verify,
                         Comment);
                 }
             }
@@ -238,29 +244,14 @@ namespace KHJHLog
             }
         }
 
+        private void grdLog_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void grdLog_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            if (grdLog.Columns[e.ColumnIndex].Name.Equals("colComment"))
-            {
-                try
-                {
-                    string Comment = "" + grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-                    string UID = "" + grdLog.Rows[e.RowIndex].Cells[0].Value;
 
-                    List<SchoolLog> SchoolLog = accesshelper.Select<SchoolLog>("uid=" + UID);
-
-                    if (SchoolLog.Count == 1)
-                    {
-                        SchoolLog[0].Comment = Comment;
-                        SchoolLog.SaveAll();
-                        MotherForm.SetStatusBarMessage("註解已成功更新為「" + Comment + "」");
-                    }
-                }
-                catch (Exception ve)
-                {
-                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
-                }
-            }
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -288,6 +279,63 @@ namespace KHJHLog
                 frmDetailLog DetailLog = new frmDetailLog(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]);
 
                 DetailLog.ShowDialog();
+            }
+        }
+
+        private void grdLog_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (grdLog.Columns[e.ColumnIndex].Name.Equals("colComment"))
+            {
+                try
+                {
+                    string UID = "" + grdLog.Rows[e.RowIndex].Cells[0].Value;
+                    string Comment = "" + grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+
+                    List<SchoolLog> SchoolLog = accesshelper.Select<SchoolLog>("uid=" + UID);
+
+                    if (SchoolLog.Count == 1)
+                    {
+                        SchoolLog[0].Comment = Comment;
+                        SchoolLog.SaveAll();
+                        MotherForm.SetStatusBarMessage("註解已成功更新為「" + Comment + "」");
+                    }
+                }
+                catch (Exception ve)
+                {
+                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
+                }
+            } else if (grdLog.Columns[e.ColumnIndex].Name.Equals("colVerify"))
+            {
+                try
+                {
+                    Task vTask = Task.Factory.StartNew
+                    (() =>
+                    {
+                        string UID = "" + grdLog.Rows[e.RowIndex].Cells[0].Value;
+                        string Verify = ("" + grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).ToLower();
+
+                        List<SchoolLog> SchoolLogs = accesshelper.Select<SchoolLog>("uid=" + UID);
+
+                        if (SchoolLogs.Count == 1)
+                        {
+                            if (Verify.Equals("true"))
+                                SchoolLogs[0].Verify = false;
+                            else
+                                SchoolLogs[0].Verify = true;
+
+                            accesshelper.UpdateValues(SchoolLogs);
+
+
+                        }
+                    }).ContinueWith((x) =>
+                    {
+                        MotherForm.SetStatusBarMessage("審查不通過已成功更新！");
+                    });
+                }
+                catch (Exception ve)
+                {
+                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
+                }
             }
         }
     }

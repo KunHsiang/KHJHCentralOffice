@@ -30,8 +30,8 @@ namespace KHJHLog
         /// <summary>
         /// 已讀
         /// </summary>
-        [Field(Field = "read")]
-        public bool Read { get; set; }
+        [Field(Field = "verify")]
+        public bool Verify { get; set; }
 
         /// <summary>
         /// 註解
