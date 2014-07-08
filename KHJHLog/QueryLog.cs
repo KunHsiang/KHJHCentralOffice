@@ -34,8 +34,6 @@ namespace KHJHLog
 
         private string GetContentFormat(string Action, string Content)
         {
-            //return Content;
-
             StringBuilder strBuilder = new StringBuilder();
             XElement elmContent;
 
@@ -68,21 +66,32 @@ namespace KHJHLog
             }
             else if (Action.Equals("班級調整"))
             {
-                //轉班
+                //班級調整
                 //  <Content>
-                //      <IDNumber> </IDNumber>
-                //      <StudentNumber> </StudentNumber>
-                //      <StudentName> </StudentName>
-                //       <GradeYear> </GradeYear>
-                //       <ClassName>  </ClassName>
-                //       <NewClassName>   </NewClassName>
-                //       <Reason> </Reason>
+                //      <IDNumber></IDNumber>
+                //      <StudentNumber></StudentNumber>
+                //      <StudentName></StudentName>
+                //      <GradeYear></GradeYear>
+                //      <ClassName></ClassName>
+                //      <NewClassName></NewClassName>
+                //      <Reason></Reason>
                 //  </Content>
 
-                return string.Format("學生「{0}」從「{1}」調整班級到「{2}」",
-                    elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName"));
+                strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
+                strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
+                strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
+                strBuilder.AppendLine(string.Format("原班級「{0}」", elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("新班級「{0}」", elmContent.ElementText("NewClassName")));
+                strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
+                strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
+
+                return strBuilder.ToString();
+
+                //return string.Format("學生「{0}」從「{1}」調整班級到「{2}」",
+                //    elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName"));
             }
-            else if (Action.Equals("鎖定班級") || Action.Equals("解鎖班級"))
+            else if (Action.Equals("鎖定班級") ||
+                     Action.Equals("解鎖班級"))
             {
                 //鎖定／解除鎖定班級
                 // <Content>
@@ -91,12 +100,38 @@ namespace KHJHLog
                 //      <Reason></Reason>
                 // </Content>
 
+                strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("年級「{0}」", elmContent.ElementText("GradeYear")));
+                strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
+
+                return strBuilder.ToString();
+
                 //strBuilder.AppendLine(
                 //    "班級名稱「" + elmContent.ElementText("ClassName") +
                 //    "」年級「" + elmContent.ElementText("GradeYear") +
                 //    "」原因「" + elmContent.ElementText("Reason") + "」");
 
-                return string.Format("班級：{0}", elmContent.ElementText("ClassName"));
+                //return string.Format("班級：{0}", elmContent.ElementText("ClassName"));
+            }
+            else if (Action.Equals("高關懷學生"))
+            {
+                //<Content>
+                // <IDNumber>Q101000099</IDNumber>
+                // <StudentNumber>11009</StudentNumber>
+                // <StudentName>林九寶</StudentName>
+                // <ClassName>330</ClassName>
+                // <SeatNo>9</SeatNo>
+                // <NumberReduce>0</NumberReduce>
+                // <DocNo>456</DocNo>
+                //</Content>
+
+                strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
+                strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
+                strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
+                strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
+
+                return strBuilder.ToString();
             }
             else
                 return Content;
