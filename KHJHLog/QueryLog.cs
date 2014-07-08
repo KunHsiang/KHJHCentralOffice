@@ -101,6 +101,40 @@ namespace KHJHLog
                 return Content;
         }
 
+        private bool IsKeywordContent(string Keyword,string Content)
+        {
+            if (string.IsNullOrEmpty(Keyword))
+                return true;
+
+            //逗號是OR
+            if (Keyword.Contains(","))
+            {
+                string[] Keywords = Keyword.Split(new char[] { ',' });
+
+                //當是OR的情況，只要有其中一個符合即傳回true
+                for (int i = 0; i < Keywords.Length; i++)
+                {
+                    if (Content.Contains(Keywords[i]))
+                        return true;
+                }
+
+                return false;
+            }
+            //空白是AND
+            {
+                string[] Keywords = Keyword.Split(new char[] {' '});
+
+                //當是And的情況，只要有其中一個不符合即傳回false
+                for (int i = 0; i < Keywords.Length; i++)
+                {
+                    if (!Content.Contains(Keywords[i]))
+                        return false;
+                }
+
+                return true;
+            }
+        }
+
         private void btnQuery_Click(object sender, EventArgs e)
         {
             string StartDate = dateStart.Value.ToShortDateString();
@@ -156,14 +190,20 @@ namespace KHJHLog
 
                 string SchoolName = vSchool != null ? vSchool.Title : DSNS;
 
-                int RowIndex = grdLog.Rows.Add(
-                    UID,
-                    Date,
-                    SchoolName,
-                    Action,
-                    Content,
-                    Read,
-                    Comment);
+                string Keyword = txtKeyword.Text;                
+
+                if (IsKeywordContent(Keyword , Content) ||
+                    IsKeywordContent(Keyword , DSNS))
+                {
+                    int RowIndex = grdLog.Rows.Add(
+                        UID,
+                        Date,
+                        SchoolName,
+                        Action,
+                        Content,
+                        Read,
+                        Comment);
+                }
             }
         }
 
