@@ -152,5 +152,10 @@ namespace KHJHCentralOffice
                 MessageBox.Show(ve.Message);
             }
         }
+
+        private void grdOpenDate_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

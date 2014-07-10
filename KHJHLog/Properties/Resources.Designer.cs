@@ -63,6 +63,16 @@ namespace KHJHLog.Properties {
         /// <summary>
         ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
         /// </summary>
+        internal static System.Drawing.Bitmap achievement_config_128 {
+            get {
+                object obj = ResourceManager.GetObject("achievement_config_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
         internal static System.Drawing.Bitmap admissions_search_128 {
             get {
                 object obj = ResourceManager.GetObject("admissions_search_128", resourceCulture);

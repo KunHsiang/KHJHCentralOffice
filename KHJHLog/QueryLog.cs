@@ -17,8 +17,8 @@ namespace KHJHLog
 {
     public partial class QueryLog : FISCA.Presentation.Controls.BaseForm
     {
-        private List<string> Actions = new List<string>() {"自動轉入","調整班級","鎖定班級","解除鎖定班級","變更特殊身分","匯入新增學生", "匯入更新班級" };
-        private List<string> VerifyActions = new List<string>() { "匯入更新班級", "調整班級", "變更特殊身分", "鎖定班級" };
+        //private List<string> Actions = new List<string>() {"自動轉入","調整班級","鎖定班級","解除鎖定班級","變更特殊身分","匯入新增學生", "匯入更新班級" };
+        //private List<string> VerifyActions = new List<string>() { "匯入更新班級", "調整班級", "變更特殊身分", "鎖定班級" };
         private AccessHelper accesshelper = new AccessHelper();
         private QueryHelper queryhelper = new QueryHelper();
         private ConfigData config = Campus.Configuration.Config.User["Option"];
@@ -272,11 +272,14 @@ namespace KHJHLog
 
             lstAction.Items.Clear();
 
-            foreach (string Action in Actions)
+            List<Action> Actions = Utility.AccessHelper
+                .Select<Action>();
+
+            foreach (Action Action in Actions)
             {
                 ListViewItem vItem = new ListViewItem();
-                vItem.Name = Action;
-                vItem.Text = VerifyActions.Contains(Action)? Action + "（需審核）" : Action;
+                vItem.Name = Action.Name;
+                vItem.Text = Action.Verify ? vItem.Name + "（需審核）" : vItem.Name;
                 vItem.Checked = true;
                 lstAction.Items.Add(vItem);
             }

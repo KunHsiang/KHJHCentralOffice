@@ -31,9 +31,14 @@ namespace KHJHLog
 
             Manager.SyncSchema(new SchoolLog());
 
+            MainPanel.RibbonBarItems["自動編班"]["動作設定"].Image = Properties.Resources.achievement_config_128;
+            MainPanel.RibbonBarItems["自動編班"]["動作設定"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            MainPanel.RibbonBarItems["自動編班"]["動作設定"].Click += (sender, e) => new frmActionList().ShowDialog();
+
             MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Image = Properties.Resources.admissions_search_128;
             MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Size = RibbonBarButton.MenuButtonSize.Medium;
             MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Click += (sender, e) => new QueryLog().ShowDialog();
+
 
             //FISCA.Permission.UI.UserManager vUser = new FISCA.Permission.UI.UserManager();
 

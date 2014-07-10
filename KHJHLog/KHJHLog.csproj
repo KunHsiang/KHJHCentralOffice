@@ -97,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataGridViewExport.cs" />
+    <Compile Include="frmActionList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmActionList.Designer.cs">
+      <DependentUpon>frmActionList.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetailLog2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,10 +128,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UDT\Action.cs" />
     <Compile Include="UDT\SchoolLog.cs" />
+    <Compile Include="Utility.cs" />
     <Compile Include="XExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmActionList.resx">
+      <DependentUpon>frmActionList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetailLog2.resx">
       <DependentUpon>frmDetailLog2.cs</DependentUpon>
     </EmbeddedResource>
@@ -148,6 +159,9 @@
       <Project>{c25c6de8-29b6-4bd6-a8b3-f79c822191a0}</Project>
       <Name>KHJHCentralOffice</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\achievement_config_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
