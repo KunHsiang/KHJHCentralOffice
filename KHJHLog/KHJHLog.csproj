@@ -97,6 +97,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataGridViewExport.cs" />
+    <Compile Include="frmDetailLog2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDetailLog2.Designer.cs">
+      <DependentUpon>frmDetailLog2.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetailLog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     <Compile Include="XExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="frmDetailLog2.resx">
+      <DependentUpon>frmDetailLog2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetailLog.resx">
       <DependentUpon>frmDetailLog.cs</DependentUpon>
     </EmbeddedResource>

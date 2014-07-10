@@ -27,6 +27,12 @@ namespace KHJHCentralOffice
         public string Content { get; set; }
 
         /// <summary>
+        /// 細節
+        /// </summary>
+        [Field(Field = "detail")]
+        public string Detail { get; set; }
+
+        /// <summary>
         /// 已讀
         /// </summary>
         [Field(Field = "read")]

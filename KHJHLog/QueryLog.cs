@@ -17,6 +17,7 @@ namespace KHJHLog
 {
     public partial class QueryLog : FISCA.Presentation.Controls.BaseForm
     {
+        private List<string> Actions = new List<string>() {"自動轉入","調整班級","鎖定班級","解除鎖定班級","變更特殊身分","匯入新增學生", "匯入更新班級" };
         private List<string> VerifyActions = new List<string>() { "匯入更新班級", "調整班級", "變更特殊身分", "鎖定班級" };
         private AccessHelper accesshelper = new AccessHelper();
         private QueryHelper queryhelper = new QueryHelper();
@@ -46,9 +47,9 @@ namespace KHJHLog
                 return Content;
             }
 
-            if (Action.Equals("特殊轉入"))
+            if (Action.Equals("自動轉入"))
             {
-                //特殊轉入
+                //自動轉入
                 // <Content>
                 //     <IDNumber>   </IDNumber>
                 //     <StudentNumber> </StudentNumber>
@@ -60,13 +61,18 @@ namespace KHJHLog
                 //  ...其他需要和異動相關的欄位
                 //  </Content>
 
-                strBuilder.AppendLine("學生姓名：" + elmContent.Element("StudentName").Value);
+                strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
+                strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
+                strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
+                strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
+                strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
 
                 return strBuilder.ToString();
             }
-            else if (Action.Equals("班級調整"))
+            else if (Action.Equals("調整班級"))
             {
-                //班級調整
+                //調整班級
                 //  <Content>
                 //      <IDNumber></IDNumber>
                 //      <StudentNumber></StudentNumber>
@@ -77,21 +83,18 @@ namespace KHJHLog
                 //      <Reason></Reason>
                 //  </Content>
 
+                strBuilder.AppendLine(string.Format("學生「{0}」從「{1}」調整班級到「{2}」",elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName")));
                 strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
-                strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
-                strBuilder.AppendLine(string.Format("原班級「{0}」", elmContent.ElementText("ClassName")));
-                strBuilder.AppendLine(string.Format("新班級「{0}」", elmContent.ElementText("NewClassName")));
                 strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
                 strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
 
                 return strBuilder.ToString();
 
-                //return string.Format("學生「{0}」從「{1}」調整班級到「{2}」",
-                //    elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName"));
+                //return 
             }
             else if (Action.Equals("鎖定班級") ||
-                     Action.Equals("解鎖班級"))
+                     Action.Equals("解除鎖定班級"))
             {
                 //鎖定／解除鎖定班級
                 // <Content>
@@ -100,20 +103,13 @@ namespace KHJHLog
                 //      <Reason></Reason>
                 // </Content>
 
-                strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("{0}「{1}」", Action , elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("年級「{0}」", elmContent.ElementText("GradeYear")));
                 strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
 
                 return strBuilder.ToString();
-
-                //strBuilder.AppendLine(
-                //    "班級名稱「" + elmContent.ElementText("ClassName") +
-                //    "」年級「" + elmContent.ElementText("GradeYear") +
-                //    "」原因「" + elmContent.ElementText("Reason") + "」");
-
-                //return string.Format("班級：{0}", elmContent.ElementText("ClassName"));
             }
-            else if (Action.Equals("高關懷學生"))
+            else if (Action.Equals("變更特殊身分"))
             {
                 //<Content>
                 // <IDNumber>Q101000099</IDNumber>
@@ -125,14 +121,17 @@ namespace KHJHLog
                 // <DocNo>456</DocNo>
                 //</Content>
 
+                strBuilder.AppendLine(string.Format("變更特殊身分學生「{0}」", elmContent.ElementText("StudentName")));
                 strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
-                strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
                 strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
 
                 return strBuilder.ToString();
-            }
+            } else if (Action.Equals("匯入更新班級"))
+                return elmContent.ElementText("Summary");
+            else if (Action.Equals("匯入新增學生"))
+                return elmContent.ElementText("Summary");
             else
                 return Content;
         }
@@ -173,6 +172,11 @@ namespace KHJHLog
 
         private void btnQuery_Click(object sender, EventArgs e)
         {
+            Query();
+        }
+
+        private void Query()
+        {
             string StartDate = dateStart.Value.ToShortDateString();
 
             config["start_date"] = StartDate;
@@ -189,7 +193,11 @@ namespace KHJHLog
                 {
                     SelectedActions.Add(Item.Name);
                 }
-            }           
+            }
+
+            //若沒有選取任何動作，則傳回空資料
+            if (SelectedActions.Count == 0)
+                return;
 
             string strStartDate = dateStart.Value.ToShortDateString();
             string strEndDate = dateEnd.Value.ToShortDateString();
@@ -201,9 +209,9 @@ namespace KHJHLog
             if (SelectedActions.Count > 0)
             {
                 string strCondition = string.Join(",", SelectedActions.Select(x => "'" + x + "'").ToArray());
-                strSQLBuilder.Append(" and action in (" + strCondition +")");
+                strSQLBuilder.Append(" and action in (" + strCondition + ")");
             }
-             
+
             strSQLBuilder.Append(" order by date_time desc");
 
             string strSQL = strSQLBuilder.ToString();
@@ -220,7 +228,7 @@ namespace KHJHLog
                 string Content = GetContentFormat(Action, row.Field<string>("content"));
                 string strVerify = row.Field<string>("verify");
                 bool Verify = false;
-                
+
                 if (row.Field<string>("verify").ToLower().Equals("false"))
                     Verify = true;
 
@@ -231,10 +239,10 @@ namespace KHJHLog
 
                 string SchoolName = vSchool != null ? vSchool.Title : DSNS;
 
-                string Keyword = txtKeyword.Text;                
+                string SearchContent = SchoolName + string.Empty + Content;
+                string Keyword = txtKeyword.Text;
 
-                if (IsKeywordContent(Keyword , Content) ||
-                    IsKeywordContent(Keyword , DSNS))
+                if (IsKeywordContent(Keyword, SearchContent))
                 {
                     int RowIndex = grdLog.Rows.Add(
                         UID,
@@ -262,19 +270,14 @@ namespace KHJHLog
                 dateStart.Value = dteStart;
             }
 
-            DataTable tblAction = queryhelper.Select("select distinct action from $school_log");
-
-            List<string> Actions = new List<string>();
-
             lstAction.Items.Clear();
 
-            foreach (DataRow row in tblAction.Rows)
+            foreach (string Action in Actions)
             {
-                string Action = row.Field<string>("action");
-
                 ListViewItem vItem = new ListViewItem();
                 vItem.Name = Action;
                 vItem.Text = VerifyActions.Contains(Action)? Action + "（需審核）" : Action;
+                vItem.Checked = true;
                 lstAction.Items.Add(vItem);
             }
         }
@@ -309,11 +312,16 @@ namespace KHJHLog
 
         private void grdLog_DoubleClick(object sender, EventArgs e)
         {
-            if (grdLog.SelectedCells.Count == 1)
+            if (grdLog.SelectedRows.Count == 1)
             {
-                frmDetailLog DetailLog = new frmDetailLog(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]);
+                string Action =  ""+grdLog.Rows[grdLog.SelectedCells[0].RowIndex].Cells[3].Value;
 
-                DetailLog.ShowDialog();
+
+                if (Action.Equals("匯入新增學生") || 
+                    Action.Equals("匯入更新班級"))
+                    new frmDetailLog2(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]).ShowDialog();
+                else
+                    new frmDetailLog(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]).ShowDialog();
             }
         }
 
@@ -371,6 +379,14 @@ namespace KHJHLog
                 {
                     MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
                 }
+            }
+        }
+
+        private void txtKeyword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode.Equals(Keys.Enter))
+            {
+                Query();
             }
         }
     }
