@@ -128,6 +128,7 @@
     <Compile Include="AddNewForm.Designer.cs">
       <DependentUpon>AddNewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Permissions.cs" />
     <Compile Include="Report\Approach_Report.cs">
       <SubType>Form</SubType>
     </Compile>

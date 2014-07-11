@@ -7,9 +7,11 @@ using System.Xml.Linq;
 using DesktopLib;
 using DevComponents.DotNetBar.Controls;
 using FISCA.UDT;
+using FCode = FISCA.Permission.FeatureCodeAttribute;
 
 namespace KHJHCentralOffice
 {
+    [FCode(Permissions.學校進路統計, "學校進路統計")]
     public partial class GraduateSurveyApproach : DetailContentImproved
     {
         private List<ApproachStatistics> ApproachSats { get; set; }

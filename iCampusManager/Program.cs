@@ -8,6 +8,7 @@ using System.Xml;
 using DesktopLib;
 using FISCA;
 using FISCA.Authentication;
+using FISCA.Permission;
 using FISCA.Presentation;
 using FISCA.UDT;
 
@@ -62,6 +63,8 @@ namespace KHJHCentralOffice
             //}
             #endregion
 
+            FISCA.Presentation.MotherForm.StartMenu["安全性"]["權限管理"].Click += (sender, e) => new FISCA.Permission.UI.RoleManager().ShowDialog();
+
             DSAServices.AutoDisplayLoadingMessageOnMotherForm();
 
             GlobalSchoolCache = new DynamicCache(); //建立一個空的快取。
@@ -84,17 +87,35 @@ namespace KHJHCentralOffice
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Image = Properties.Resources.school_events_config_128;
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Size = RibbonBarButton.MenuButtonSize.Medium;
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Click += (sender, e) => new OpenTime().ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["開放時間"].Enable = Permissions.開放時間權限;
 
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"].Image = Properties.Resources.paste_64;
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"].Size = RibbonBarButton.MenuButtonSize.Medium;
 
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業學生進路統計表"].Click += (sender, e) => new Approach_Report("國中畢業學生進路調查填報表格", Properties.Resources._102學年度國中畢業學生進路調查填報表格).ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業學生進路統計表"].Enable = Permissions.畢業學生進路統計表權限;
+
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業學生進路複核表"].Click += (sender, e) => new Approach_Report("國中畢業學生進路調查填報複核表", Properties.Resources._102學年度國中畢業學生進路調查填報複核表).ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業學生進路複核表"].Enable = Permissions.畢業學生進路複核表權限;
+
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業未升學未就業學生動向"].Click += (sender, e) => new UnApproach_Report("國中畢業未升學未就業學生動向", Properties.Resources.國中畢業未升學未就業學生動向).ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["報表"]["畢業未升學未就業學生動向"].Enable = Permissions.畢業未升學未就業學生動向權限;
 
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Size = RibbonBarButton.MenuButtonSize.Medium;
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Image = Properties.Resources.school_search_128;
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Click += (sender, e) => new UnApproach_Check().ShowDialog();
+            Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Enable = Permissions.未上傳學校權限;
+
+            FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
+            AdminCatalog.Add(new RibbonFeature(Permissions.未上傳學校, "未上傳學校"));
+            AdminCatalog.Add(new RibbonFeature(Permissions.畢業未升學未就業學生動向, "畢業未升學未就業學生動向"));
+            AdminCatalog.Add(new RibbonFeature(Permissions.畢業學生進路統計表, "畢業學生進路統計表"));
+            AdminCatalog.Add(new RibbonFeature(Permissions.畢業學生進路複核表, "畢業學生進路複核表"));
+            AdminCatalog.Add(new RibbonFeature(Permissions.開放時間, "開放時間"));
+
+            FISCA.Permission.Catalog DetailCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["資料項目"];
+            DetailCatalog.Add(new DetailItemFeature(Permissions.學校基本資料, "學校基本資料"));
+            DetailCatalog.Add(new DetailItemFeature(Permissions.學校進路統計, "學校進路統計"));
 
             RefreshFilteredSource();
 

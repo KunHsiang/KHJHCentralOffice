@@ -1,19 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using FISCA.UDT;
-using FISCA.DSA;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 using DesktopLib;
+using FISCA.DSA;
+using FISCA.UDT;
+using FCode = FISCA.Permission.FeatureCodeAttribute;
 
 namespace KHJHCentralOffice
 {
+    [FCode(Permissions.學校基本資料, "學校基本資料")]
     public partial class BasicInfoItem : DetailContentImproved
     {
         private School SchoolData { get; set; }
