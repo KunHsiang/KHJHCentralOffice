@@ -28,10 +28,10 @@ namespace KHJHLog
         public string Content { get; set; }
 
         /// <summary>
-        /// 已讀
+        /// 是否審核
         /// </summary>
-        [Field(Field = "verify")]
-        public bool Verify { get; set; }
+        [Field(Field = "is_verify")]
+        public string IsVerify { get; set; }
 
         /// <summary>
         /// 註解

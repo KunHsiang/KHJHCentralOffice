@@ -64,7 +64,7 @@
     </Reference>
     <Reference Include="FISCA.DSAClient">
       <HintPath>C:\ischool\kernel\FISCA.DSAClient.dll</HintPath>
-      <Private>False</Private>
+      <Private>True</Private>
     </Reference>
     <Reference Include="FISCA.DSAUtil">
       <HintPath>C:\ischool\kernel\FISCA.DSAUtil.dll</HintPath>
@@ -131,6 +131,7 @@
     </Compile>
     <Compile Include="UDT\Action.cs" />
     <Compile Include="UDT\SchoolLog.cs" />
+    <Compile Include="UpdateHelper.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="XExtensions.cs" />
   </ItemGroup>

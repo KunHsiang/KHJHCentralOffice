@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace KHJHLog
         private AccessHelper accesshelper = new AccessHelper();
         private QueryHelper queryhelper = new QueryHelper();
         private ConfigData config = Campus.Configuration.Config.User["Option"];
+        private Color UpdateColor = Color.FromArgb(255, 255, 192);
+        private bool IsUpdate = false;
 
         public QueryLog()
         {
@@ -177,6 +180,13 @@ namespace KHJHLog
 
         private void Query()
         {
+            if (IsUpdate)
+            {
+                IsUpdate = false;
+                if (MessageBox.Show("提醒您有資料尚未儲存，是否先儲存後再查詢？", "自動編班查詢", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                    Save();
+            }
+
             string StartDate = dateStart.Value.ToShortDateString();
 
             config["start_date"] = StartDate;
@@ -204,7 +214,7 @@ namespace KHJHLog
 
             StringBuilder strSQLBuilder = new StringBuilder();
 
-            strSQLBuilder.Append("select uid,date_time,dsns,action,content,verify,comment from $school_log where date_time>='" + strStartDate + " 00:00:00' and date_time<='" + strEndDate + " 23:59:59'");
+            strSQLBuilder.Append("select uid,date_time,dsns,action,content,is_verify,comment from $school_log where date_time>='" + strStartDate + " 00:00:00' and date_time<='" + strEndDate + " 23:59:59' ");
 
             if (SelectedActions.Count > 0)
             {
@@ -222,16 +232,11 @@ namespace KHJHLog
             foreach (DataRow row in tblSchoolLog.Rows)
             {
                 string UID = row.Field<string>("uid");
-                string Date = DateTime.Parse(row.Field<string>("date_time")).ToShortDateString();
+                string Date = DateTime.Parse(row.Field<string>("date_time")).ToString("yyyy/MM/dd HH:mm");
                 string DSNS = row.Field<string>("dsns");
                 string Action = row.Field<string>("action");
                 string Content = GetContentFormat(Action, row.Field<string>("content"));
-                string strVerify = row.Field<string>("verify");
-                bool Verify = false;
-
-                if (row.Field<string>("verify").ToLower().Equals("false"))
-                    Verify = true;
-
+                string IsVerify = row.Field<string>("is_verify");
                 string Comment = row.Field<string>("comment");
 
                 School vSchool = Schools
@@ -250,7 +255,7 @@ namespace KHJHLog
                         SchoolName,
                         Action,
                         Content,
-                        Verify,
+                        IsVerify,
                         Comment);
                 }
             }
@@ -332,56 +337,12 @@ namespace KHJHLog
         {
             if (grdLog.Columns[e.ColumnIndex].Name.Equals("colComment"))
             {
-                try
-                {
-                    string UID = "" + grdLog.Rows[e.RowIndex].Cells[0].Value;
-                    string Comment = "" + grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
-
-                    List<SchoolLog> SchoolLog = accesshelper.Select<SchoolLog>("uid=" + UID);
-
-                    if (SchoolLog.Count == 1)
-                    {
-                        SchoolLog[0].Comment = Comment;
-                        SchoolLog.SaveAll();
-                        MotherForm.SetStatusBarMessage("註解已成功更新為「" + Comment + "」");
-                    }
-                }
-                catch (Exception ve)
-                {
-                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
-                }
+                grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.FromArgb(255,255,192);
+                IsUpdate = true;
             } else if (grdLog.Columns[e.ColumnIndex].Name.Equals("colVerify"))
             {
-                try
-                {
-                    Task vTask = Task.Factory.StartNew
-                    (() =>
-                    {
-                        string UID = "" + grdLog.Rows[e.RowIndex].Cells[0].Value;
-                        string Verify = ("" + grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Value).ToLower();
-
-                        List<SchoolLog> SchoolLogs = accesshelper.Select<SchoolLog>("uid=" + UID);
-
-                        if (SchoolLogs.Count == 1)
-                        {
-                            if (Verify.Equals("true"))
-                                SchoolLogs[0].Verify = false;
-                            else
-                                SchoolLogs[0].Verify = true;
-
-                            accesshelper.UpdateValues(SchoolLogs);
-
-
-                        }
-                    }).ContinueWith((x) =>
-                    {
-                        MotherForm.SetStatusBarMessage("審查不通過已成功更新！");
-                    });
-                }
-                catch (Exception ve)
-                {
-                    MessageBox.Show("更新註解失敗，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
-                }
+                grdLog.Rows[e.RowIndex].Cells[e.ColumnIndex].Style.BackColor = Color.FromArgb(255, 255, 192);
+                IsUpdate = true;
             }
         }
 
@@ -390,6 +351,55 @@ namespace KHJHLog
             if (e.KeyCode.Equals(Keys.Enter))
             {
                 Query();
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void Save()
+        {
+            UpdateHelper updateHelper = new UpdateHelper();
+
+            List<string> updateSQLs = new List<string>();
+            List<DataGridViewRow> Rows = new List<DataGridViewRow>();
+
+            foreach (DataGridViewRow Row in grdLog.Rows)
+            {
+                if (Row.Cells["colComment"].Style.BackColor.Equals(UpdateColor) ||
+                    Row.Cells["colVerify"].Style.BackColor.Equals(UpdateColor))
+                {
+                    string UID = "" + Row.Cells["colID"].Value;
+                    string Comment = "" + Row.Cells["colComment"].Value;
+                    string Verify = "" + Row.Cells["colVerify"].Value;
+
+                    Rows.Add(Row);
+                    updateSQLs.Add("UPDATE $school_log SET is_verify = '" + Verify + "', comment = '" + Comment + "' WHERE uid =" + UID);
+                }
+            }
+
+            if (updateSQLs.Count > 0)
+            {
+                try
+                {
+                    updateHelper.Execute(updateSQLs);
+
+                    foreach (DataGridViewRow Row in Rows)
+                    {
+                        Row.Cells["colComment"].Style.BackColor = Color.White;
+                        Row.Cells["colVerify"].Style.BackColor = Color.White;
+                    }
+
+                    IsUpdate = true;
+
+                    MessageBox.Show("已成功更新" + updateSQLs.Count + "筆記錄！");
+                }
+                catch (Exception ve)
+                {
+                    MessageBox.Show("更新錯誤，錯誤訊息如下：" + System.Environment.NewLine + ve.Message);
+                }
             }
         }
     }
