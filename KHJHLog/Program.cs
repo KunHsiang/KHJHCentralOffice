@@ -26,6 +26,7 @@ namespace KHJHLog
             SchemaManager Manager = new SchemaManager(FISCA.Authentication.DSAServices.DefaultConnection);
 
             Manager.SyncSchema(new SchoolLog());
+            Manager.SyncSchema(new Action());
 
             MainPanel.RibbonBarItems["自動編班"]["動作設定"].Image = Properties.Resources.achievement_config_128;
             MainPanel.RibbonBarItems["自動編班"]["動作設定"].Size = RibbonBarButton.MenuButtonSize.Medium;

@@ -85,6 +85,42 @@ namespace KHJHLog
                                                elmStudent.ElementText("Reason"));
                         }
                     }
+                    else if (txtAction.Text.Equals("匯入特殊身分"))
+                    {
+                        //<Content>
+                        //    <Summary>
+                        //    匯入特殊身分學生共...筆。
+                        //    </Summary>
+                        //</Content>
+                        //<Detail>
+                        //    <Student>
+                        //    <IDNumber>S125514930</IDNumber>
+                        //    <StudentNumber>910029</StudentNumber>
+                        //    <StudentName>吳昱志</StudentName>
+                        //    <ClassName>704</ClassName>
+                        //    <SeatNo>3</SeatNo>
+                        //    <NumberReduce>0</NumberReduce>
+                        //    <DocNo>測試用文號00001</DocNo>
+                        //</Detail>
+
+                        //身分證 學號 姓名 年級 班級 新班級 理由
+
+                        grdDetail.Columns[3].HeaderText = "班級";
+                        grdDetail.Columns[4].HeaderText = "座號";
+                        grdDetail.Columns[5].HeaderText = "減免人數";
+                        grdDetail.Columns[6].HeaderText = "文號";
+
+                        foreach (XElement elmStudent in elmContent.Elements("Student"))
+                        {
+                            grdDetail.Rows.Add(elmStudent.ElementText("IDNumber"),
+                                               elmStudent.ElementText("StudentNumber"),
+                                               elmStudent.ElementText("StudentName"),
+                                               elmStudent.ElementText("ClassName"),
+                                               elmStudent.ElementText("SeatNo"),
+                                               elmStudent.ElementText("NumberReduce"),
+                                               elmStudent.ElementText("DocNo"));
+                        }
+                    }
                 }
                 catch
                 {

@@ -41,6 +41,7 @@
             // 
             // grdOpenDate
             // 
+            this.grdOpenDate.AllowUserToAddRows = false;
             this.grdOpenDate.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;

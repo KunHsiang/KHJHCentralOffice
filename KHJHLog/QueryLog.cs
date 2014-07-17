@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using Campus.Configuration;
 using FISCA.Data;
+using FISCA.LogAgent;
 using FISCA.Presentation;
 using FISCA.UDT;
 using KHJHCentralOffice;
@@ -86,11 +87,11 @@ namespace KHJHLog
                 //      <Reason></Reason>
                 //  </Content>
 
-                strBuilder.AppendLine(string.Format("學生「{0}」從「{1}」調整班級到「{2}」",elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName")));
+                strBuilder.AppendLine(string.Format("學生「{0}」從「{1}」調整班級到「{2}」", elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName")));
                 strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
-                strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
                 strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
+                strBuilder.AppendLine(string.Format("第一優先順班級「{0}」", elmContent.ElementText("FirstPriorityClassName")));
 
                 return strBuilder.ToString();
 
@@ -106,9 +107,11 @@ namespace KHJHLog
                 //      <Reason></Reason>
                 // </Content>
 
-                strBuilder.AppendLine(string.Format("{0}「{1}」", Action , elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("{0}「{1}」", Action, elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("年級「{0}」", elmContent.ElementText("GradeYear")));
                 strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
+                strBuilder.AppendLine(string.Format("備註「{0}」", elmContent.ElementText("Comment")));
+                strBuilder.AppendLine(string.Format("文號「{0}」", elmContent.ElementText("DocNo")));
 
                 return strBuilder.ToString();
             }
@@ -129,11 +132,15 @@ namespace KHJHLog
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
                 strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
+                strBuilder.AppendLine(string.Format("減免人數「{0}」", elmContent.ElementText("NumberReduce")));
 
                 return strBuilder.ToString();
-            } else if (Action.Equals("匯入更新班級"))
+            }
+            else if (Action.Equals("匯入更新班級"))
                 return elmContent.ElementText("Summary");
             else if (Action.Equals("匯入新增學生"))
+                return elmContent.ElementText("Summary");
+            else if (Action.Equals("匯入特殊身分"))
                 return elmContent.ElementText("Summary");
             else
                 return Content;
@@ -218,7 +225,7 @@ namespace KHJHLog
 
             if (SelectedActions.Count > 0)
             {
-                string strCondition = string.Join(",", SelectedActions.Select(x => "'" + x + "'").ToArray());
+                string strCondition = string.Join(",", SelectedActions.Select(x => "'" + x.Trim() + "'").ToArray());
                 strSQLBuilder.Append(" and action in (" + strCondition + ")");
             }
 
@@ -326,7 +333,8 @@ namespace KHJHLog
 
 
                 if (Action.Equals("匯入新增學生") || 
-                    Action.Equals("匯入更新班級"))
+                    Action.Equals("匯入更新班級") ||
+                    Action.Equals("匯入特殊身分"))
                     new frmDetailLog2(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]).ShowDialog();
                 else
                     new frmDetailLog(grdLog.Rows[grdLog.SelectedCells[0].RowIndex]).ShowDialog();
@@ -365,6 +373,7 @@ namespace KHJHLog
 
             List<string> updateSQLs = new List<string>();
             List<DataGridViewRow> Rows = new List<DataGridViewRow>();
+            StringBuilder strLog = new StringBuilder();
 
             foreach (DataGridViewRow Row in grdLog.Rows)
             {
@@ -372,11 +381,19 @@ namespace KHJHLog
                     Row.Cells["colVerify"].Style.BackColor.Equals(UpdateColor))
                 {
                     string UID = "" + Row.Cells["colID"].Value;
+
+                    string Date = "" + Row.Cells["colDate"].Value;
+                    string School = "" + Row.Cells["colSchool"].Value;
+                    string Action = "" + Row.Cells["colAction"].Value;
+                    string Content = "" + Row.Cells["colContent"].Value;
+
                     string Comment = "" + Row.Cells["colComment"].Value;
                     string Verify = "" + Row.Cells["colVerify"].Value;
 
                     Rows.Add(Row);
                     updateSQLs.Add("UPDATE $school_log SET is_verify = '" + Verify + "', comment = '" + Comment + "' WHERE uid =" + UID);
+
+                    strLog.AppendLine("日期時間「" + Date + "」學校「" + School + "」動作「" + Action + "」審核結果「" + Verify +"」備註「" + Comment +"」");
                 }
             }
 
@@ -393,6 +410,8 @@ namespace KHJHLog
                     }
 
                     IsUpdate = true;
+
+                    ApplicationLog.Log("高雄市自動編班", "修改審核及備註", strLog.ToString());
 
                     MessageBox.Show("已成功更新" + updateSQLs.Count + "筆記錄！");
                 }
