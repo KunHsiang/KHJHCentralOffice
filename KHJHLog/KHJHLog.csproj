@@ -124,11 +124,6 @@
     <Compile Include="QueryLog.Designer.cs">
       <DependentUpon>QueryLog.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="UDT\Action.cs" />
     <Compile Include="UDT\SchoolLog.cs" />
     <Compile Include="UpdateHelper.cs" />
@@ -147,7 +142,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="QueryLog.resx">
       <DependentUpon>QueryLog.cs</DependentUpon>
@@ -155,6 +149,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\admissions_search_128.png" />
+    <None Include="Resources\學生成績通知單%283-6%29.doc" />
+    <None Include="Resources\學生成績通知單%287-8%29.doc" />
+    <None Include="Resources\學生成績通知單%289-12%29.doc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\iCampusManager\KHJHCentralOffice.csproj">

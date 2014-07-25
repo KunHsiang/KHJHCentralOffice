@@ -106,14 +106,14 @@ namespace KHJHCentralOffice
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Click += (sender, e) => new UnApproach_Check().ShowDialog();
             Program.MainPanel.RibbonBarItems["畢業學生進路調查"]["未上傳學校"].Enable = Permissions.未上傳學校權限;
 
-            FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
+            FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["畢業學生進路調查"]["功能按鈕"];
             AdminCatalog.Add(new RibbonFeature(Permissions.未上傳學校, "未上傳學校"));
             AdminCatalog.Add(new RibbonFeature(Permissions.畢業未升學未就業學生動向, "畢業未升學未就業學生動向"));
             AdminCatalog.Add(new RibbonFeature(Permissions.畢業學生進路統計表, "畢業學生進路統計表"));
             AdminCatalog.Add(new RibbonFeature(Permissions.畢業學生進路複核表, "畢業學生進路複核表"));
             AdminCatalog.Add(new RibbonFeature(Permissions.開放時間, "開放時間"));
 
-            FISCA.Permission.Catalog DetailCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["資料項目"];
+            FISCA.Permission.Catalog DetailCatalog = FISCA.Permission.RoleAclSource.Instance["畢業學生進路調查"]["資料項目"];
             DetailCatalog.Add(new DetailItemFeature(Permissions.學校基本資料, "學校基本資料"));
             DetailCatalog.Add(new DetailItemFeature(Permissions.學校進路統計, "學校進路統計"));
 
