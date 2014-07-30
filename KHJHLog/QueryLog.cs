@@ -4,6 +4,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -226,7 +227,7 @@ namespace KHJHLog
             if (SelectedActions.Count > 0)
             {
                 string strCondition = string.Join(",", SelectedActions.Select(x => "'" + x.Trim() + "'").ToArray());
-                strSQLBuilder.Append(" and action in (" + strCondition + ")");
+                strSQLBuilder.Append(" and trim(action) in (" + strCondition + ")");
             }
 
             strSQLBuilder.Append(" order by date_time desc");
@@ -241,7 +242,7 @@ namespace KHJHLog
                 string UID = row.Field<string>("uid");
                 string Date = DateTime.Parse(row.Field<string>("date_time")).ToString("yyyy/MM/dd HH:mm");
                 string DSNS = row.Field<string>("dsns");
-                string Action = row.Field<string>("action");
+                string Action = row.Field<string>("action").Trim();
                 string Content = GetContentFormat(Action, row.Field<string>("content"));
                 string IsVerify = row.Field<string>("is_verify");
                 string Comment = row.Field<string>("comment");
@@ -270,6 +271,11 @@ namespace KHJHLog
 
         private void QueryLog_Load(object sender, EventArgs e)
         {
+            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+
+            this.Text += "『" + version.ToString() + "』";
+            this.TitleText += "『" + version.ToString() + "』";
+
             DateTime dteStart = DateTime.Today.AddDays(-7);
             dateStart.Value = dteStart;
             dateEnd.Value = DateTime.Today;
