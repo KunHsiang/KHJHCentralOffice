@@ -104,6 +104,7 @@
             this.colAction.DefaultCellStyle = dataGridViewCellStyle2;
             this.colAction.HeaderText = "動作";
             this.colAction.Name = "colAction";
+            this.colAction.ReadOnly = true;
             // 
             // colVerify
             // 

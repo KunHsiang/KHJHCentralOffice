@@ -38,7 +38,7 @@ namespace KHJHLog
             MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Click += (sender, e) => new QueryLog().ShowDialog();
             MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Enable = Permissions.查詢紀錄權限;
 
-            MainPanel.RibbonBarItems["自動編班"]["TestPassport"].Click += (sender, e) => new frmTestPassport().ShowDialog();
+            //MainPanel.RibbonBarItems["自動編班"]["TestPassport"].Click += (sender, e) => new frmTestPassport().ShowDialog();
 
             FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
             AdminCatalog.Add(new RibbonFeature(Permissions.查詢紀錄, "查詢紀錄"));

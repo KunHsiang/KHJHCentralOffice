@@ -180,11 +180,11 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(51, 129);
+            this.labelX5.Location = new System.Drawing.Point(24, 129);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(47, 21);
+            this.labelX5.Size = new System.Drawing.Size(74, 21);
             this.labelX5.TabIndex = 8;
-            this.labelX5.Text = "備註：";
+            this.labelX5.Text = "局端備註：";
             // 
             // txtComment
             // 

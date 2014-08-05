@@ -59,27 +59,44 @@ namespace KHJHLog
                         //  </Student>
                         //</Detail>
 
-                        grdDetail.Columns[6].Visible = false;
-                        grdDetail.Columns[5].HeaderText = "座號";
+                        grdDetail.Columns.Add("身分證", "身分證");
+                        grdDetail.Columns.Add("學號", "學號");
+                        grdDetail.Columns.Add("學生姓名", "學生姓名");
+                        grdDetail.Columns.Add("班級名稱", "班級名稱");
+                        grdDetail.Columns.Add("座號", "座號");
 
                         foreach (XElement elmStudent in elmContent.Elements("Student"))
                         {
-                            grdDetail.Rows.Add(elmStudent.ElementText("IDNumber"),
-                                               elmStudent.ElementText("StudentNumber"),
-                                               elmStudent.ElementText("StudentName"),
-                                               elmStudent.ElementText("ClassName"),
-                                               elmStudent.ElementText("SeatNo"));
+                            grdDetail.Rows.Add(
+                                txtDate.Text,
+                                txtSchool.Text,
+                                txtAction.Text,
+                                elmStudent.ElementText("IDNumber"),
+                                elmStudent.ElementText("StudentNumber"),
+                                elmStudent.ElementText("StudentName"),
+                                elmStudent.ElementText("ClassName"),
+                                elmStudent.ElementText("SeatNo"));
                         }                   
                     }
                     else if (txtAction.Text.Equals("匯入更新班級"))
                     {
+                        grdDetail.Columns.Add("身分證", "身分證");
+                        grdDetail.Columns.Add("學號", "學號");
+                        grdDetail.Columns.Add("學生姓名", "學生姓名");
+                        grdDetail.Columns.Add("原班級", "原班級");
+                        grdDetail.Columns.Add("新班級", "新班級");
+
                         foreach (XElement elmStudent in elmContent.Elements("Student"))
                         {
-                            grdDetail.Rows.Add(elmStudent.ElementText("IDNumber"),
-                                               elmStudent.ElementText("StudentNumber"),
-                                               elmStudent.ElementText("StudentName"),
-                                               elmStudent.ElementText("ClassName"),
-                                               elmStudent.ElementText("NewClassName"));
+                            grdDetail.Rows.Add(
+                                txtDate.Text,
+                                txtSchool.Text,
+                                txtAction.Text,
+                                elmStudent.ElementText("IDNumber"),
+                                elmStudent.ElementText("StudentNumber"),
+                                elmStudent.ElementText("StudentName"),
+                                elmStudent.ElementText("ClassName"),
+                                elmStudent.ElementText("NewClassName"));
                         }
                     }
                     else if (txtAction.Text.Equals("匯入特殊身分"))
@@ -100,22 +117,27 @@ namespace KHJHLog
                         //    <DocNo>測試用文號00001</DocNo>
                         //</Detail>
 
-                        //身分證 學號 姓名 年級 班級 新班級 理由
-
-                        grdDetail.Columns[3].HeaderText = "班級";
-                        grdDetail.Columns[4].HeaderText = "座號";
-                        grdDetail.Columns[5].HeaderText = "減免人數";
-                        grdDetail.Columns[6].HeaderText = "文號";
-
+                        grdDetail.Columns.Add("身分證", "身分證");
+                        grdDetail.Columns.Add("學號", "學號");
+                        grdDetail.Columns.Add("學生姓名", "學生姓名");
+                        grdDetail.Columns.Add("班級名稱", "班級名稱");
+                        grdDetail.Columns.Add("座號", "座號");
+                        grdDetail.Columns.Add("減免人數", "減免人數");
+                        grdDetail.Columns.Add("文號", "文號");
+                       
                         foreach (XElement elmStudent in elmContent.Elements("Student"))
                         {
-                            grdDetail.Rows.Add(elmStudent.ElementText("IDNumber"),
-                                               elmStudent.ElementText("StudentNumber"),
-                                               elmStudent.ElementText("StudentName"),
-                                               elmStudent.ElementText("ClassName"),
-                                               elmStudent.ElementText("SeatNo"),
-                                               elmStudent.ElementText("NumberReduce"),
-                                               elmStudent.ElementText("DocNo"));
+                            grdDetail.Rows.Add(
+                                txtDate.Text,
+                                txtSchool.Text,
+                                txtAction.Text,
+                                elmStudent.ElementText("IDNumber"),
+                                elmStudent.ElementText("StudentNumber"),
+                                elmStudent.ElementText("StudentName"),
+                                elmStudent.ElementText("ClassName"),
+                                elmStudent.ElementText("SeatNo"),
+                                elmStudent.ElementText("NumberReduce"),
+                                elmStudent.ElementText("DocNo"));
                         }
                     }
                 }

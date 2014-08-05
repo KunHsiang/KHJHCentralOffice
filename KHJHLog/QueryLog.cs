@@ -68,7 +68,7 @@ namespace KHJHLog
                 strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
                 strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
-                strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
+                strBuilder.AppendLine(string.Format("備註「{0}」", elmContent.ElementText("Reason")));
 
                 return strBuilder.ToString();
             }

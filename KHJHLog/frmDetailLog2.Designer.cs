@@ -43,12 +43,9 @@
             this.txtContent = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.btnExport = new DevComponents.DotNetBar.ButtonX();
-            this.colIDNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNewClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSchool = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colAction = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -172,11 +169,11 @@
             // 
             this.labelX5.BackgroundStyle.Class = "";
             this.labelX5.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX5.Location = new System.Drawing.Point(51, 129);
+            this.labelX5.Location = new System.Drawing.Point(24, 129);
             this.labelX5.Name = "labelX5";
-            this.labelX5.Size = new System.Drawing.Size(47, 21);
+            this.labelX5.Size = new System.Drawing.Size(74, 21);
             this.labelX5.TabIndex = 8;
-            this.labelX5.Text = "備註：";
+            this.labelX5.Text = "局端備註：";
             // 
             // txtComment
             // 
@@ -220,12 +217,9 @@
             this.grdDetail.BackgroundColor = System.Drawing.Color.White;
             this.grdDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colIDNumber,
-            this.colStudentNumber,
-            this.colStudentName,
-            this.colClassName,
-            this.colNewClassName,
-            this.colReason});
+            this.colDate,
+            this.colSchool,
+            this.colAction});
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
@@ -290,41 +284,26 @@
             this.btnExport.Text = "匯出";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
-            // colIDNumber
+            // colDate
             // 
-            this.colIDNumber.HeaderText = "身分證";
-            this.colIDNumber.Name = "colIDNumber";
-            this.colIDNumber.ReadOnly = true;
+            this.colDate.HeaderText = "日期";
+            this.colDate.Name = "colDate";
+            this.colDate.ReadOnly = true;
+            this.colDate.Visible = false;
             // 
-            // colStudentNumber
+            // colSchool
             // 
-            this.colStudentNumber.HeaderText = "學號";
-            this.colStudentNumber.Name = "colStudentNumber";
-            this.colStudentNumber.ReadOnly = true;
+            this.colSchool.HeaderText = "學校";
+            this.colSchool.Name = "colSchool";
+            this.colSchool.ReadOnly = true;
+            this.colSchool.Visible = false;
             // 
-            // colStudentName
+            // colAction
             // 
-            this.colStudentName.HeaderText = "姓名";
-            this.colStudentName.Name = "colStudentName";
-            this.colStudentName.ReadOnly = true;
-            // 
-            // colClassName
-            // 
-            this.colClassName.HeaderText = "班級";
-            this.colClassName.Name = "colClassName";
-            this.colClassName.ReadOnly = true;
-            // 
-            // colNewClassName
-            // 
-            this.colNewClassName.HeaderText = "新班級";
-            this.colNewClassName.Name = "colNewClassName";
-            this.colNewClassName.ReadOnly = true;
-            // 
-            // colReason
-            // 
-            this.colReason.HeaderText = "理由";
-            this.colReason.Name = "colReason";
-            this.colReason.ReadOnly = true;
+            this.colAction.HeaderText = "動作";
+            this.colAction.Name = "colAction";
+            this.colAction.ReadOnly = true;
+            this.colAction.Visible = false;
             // 
             // frmDetailLog2
             // 
@@ -371,11 +350,8 @@
         private DevComponents.DotNetBar.Controls.TextBoxX txtContent;
         private DevComponents.DotNetBar.LabelX labelX6;
         private DevComponents.DotNetBar.ButtonX btnExport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colIDNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStudentNumber;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colStudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colClassName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colNewClassName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colReason;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSchool;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colAction;
     }
 }
