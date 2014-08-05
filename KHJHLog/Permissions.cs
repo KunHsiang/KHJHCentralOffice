@@ -3,13 +3,13 @@ namespace KHJHLog
 {
     class Permissions
     {
-        public static string 記錄查詢 { get { return "44e329e1-ffb9-429f-9579-3d30dcb4f6b8"; } }
+        public static string 查詢紀錄 { get { return "44e329e1-ffb9-429f-9579-3d30dcb4f6b8"; } }
 
-        public static bool 記錄查詢權限
+        public static bool 查詢紀錄權限
         {
             get
             {
-                return FISCA.Permission.UserAcl.Current[記錄查詢].Executable;
+                return FISCA.Permission.UserAcl.Current[查詢紀錄].Executable;
             }
         }
 

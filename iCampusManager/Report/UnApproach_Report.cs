@@ -98,17 +98,20 @@ namespace KHJHCentralOffice
                     if (vSchool != null)
                         SchoolName = vSchool.Title;
 
-                    foreach (XElement elmStudent in elmContent.Element("UnApproachStudents").Elements("Student"))
+                    if (elmContent.Element("UnApproachStudents") != null)
                     {
-                        book.Worksheets[0].Cells[RowIndex, 0].PutValue(SchoolName);
-                        book.Worksheets[0].Cells[RowIndex, 1].PutValue(elmStudent.Element("姓名").Value);
-                        book.Worksheets[0].Cells[RowIndex, 2].PutValue(elmStudent.Element("座號").Value);
-                        book.Worksheets[0].Cells[RowIndex, 3].PutValue(elmStudent.Element("未升學未就業動向").Value);
-                        book.Worksheets[0].Cells[RowIndex, 4].PutValue(elmStudent.Element("是否需要教育部協助").Value);
-                        book.Worksheets[0].Cells[RowIndex, 5].PutValue(elmStudent.Element("備註").Value);
+                        foreach (XElement elmStudent in elmContent.Element("UnApproachStudents").Elements("Student"))
+                        {
+                            book.Worksheets[0].Cells[RowIndex, 0].PutValue(SchoolName);
+                            book.Worksheets[0].Cells[RowIndex, 1].PutValue(elmStudent.Element("姓名").Value);
+                            book.Worksheets[0].Cells[RowIndex, 2].PutValue(elmStudent.Element("座號").Value);
+                            book.Worksheets[0].Cells[RowIndex, 3].PutValue(elmStudent.Element("未升學未就業動向").Value);
+                            book.Worksheets[0].Cells[RowIndex, 4].PutValue(elmStudent.Element("是否需要教育部協助").Value);
+                            book.Worksheets[0].Cells[RowIndex, 5].PutValue(elmStudent.Element("備註").Value);
 
-                        RowIndex++;
-                    } 
+                            RowIndex++;
+                        }
+                    }
                 }
 
                 return book;

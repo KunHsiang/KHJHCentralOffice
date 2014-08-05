@@ -65,10 +65,11 @@
     </Reference>
     <Reference Include="Aspose.Cells">
       <HintPath>C:\ischool\modules\SHSchoolLoader\Aspose.Cells.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Aspose.Words">
       <HintPath>C:\ischool\modules\SHSchoolLoader\Aspose.Words.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <Private>False</Private>
@@ -96,6 +97,7 @@
     <Reference Include="FISCA.DSAUtil, Version=3.9.0.10, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\ischool(CentralOffice)\kernel\FISCA.DSAUtil.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Permission">
       <HintPath>C:\ischool\kernel\FISCA.Permission.dll</HintPath>
@@ -411,7 +413,7 @@
     <ProjectReference Include="..\DesktopLib\DesktopLib.csproj">
       <Project>{6511b475-96a3-4c16-9ef6-a1393896cab4}</Project>
       <Name>DesktopLib</Name>
-      <Private>True</Private>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

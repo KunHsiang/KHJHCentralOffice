@@ -67,7 +67,6 @@ namespace KHJHLog
                             grdDetail.Rows.Add(elmStudent.ElementText("IDNumber"),
                                                elmStudent.ElementText("StudentNumber"),
                                                elmStudent.ElementText("StudentName"),
-                                               elmStudent.ElementText("GradeYear"),
                                                elmStudent.ElementText("ClassName"),
                                                elmStudent.ElementText("SeatNo"));
                         }                   
@@ -79,10 +78,8 @@ namespace KHJHLog
                             grdDetail.Rows.Add(elmStudent.ElementText("IDNumber"),
                                                elmStudent.ElementText("StudentNumber"),
                                                elmStudent.ElementText("StudentName"),
-                                               elmStudent.ElementText("GradeYear"),
                                                elmStudent.ElementText("ClassName"),
-                                               elmStudent.ElementText("NewClassName"),
-                                               elmStudent.ElementText("Reason"));
+                                               elmStudent.ElementText("NewClassName"));
                         }
                     }
                     else if (txtAction.Text.Equals("匯入特殊身分"))

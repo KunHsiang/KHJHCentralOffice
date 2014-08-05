@@ -21,7 +21,7 @@ namespace KHJHCentralOffice
             DSNSField = new KHJHCentralOffice.DSNSField();
 
             TitleField.Register(Program.MainPanel);
-            DSNSField.Register(Program.MainPanel);
+            //DSNSField.Register(Program.MainPanel);
             GroupField.Register(Program.MainPanel);
         }
     }

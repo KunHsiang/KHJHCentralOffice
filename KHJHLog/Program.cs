@@ -33,13 +33,15 @@ namespace KHJHLog
             MainPanel.RibbonBarItems["自動編班"]["動作設定"].Click += (sender, e) => new frmActionList().ShowDialog();
             MainPanel.RibbonBarItems["自動編班"]["動作設定"].Enable = Permissions.動作設定權限;
 
-            MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Image = Properties.Resources.admissions_search_128;
-            MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Size = RibbonBarButton.MenuButtonSize.Medium;
-            MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Click += (sender, e) => new QueryLog().ShowDialog();
-            MainPanel.RibbonBarItems["自動編班"]["記錄查詢"].Enable = Permissions.記錄查詢權限;
+            MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Image = Properties.Resources.admissions_search_128;
+            MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Click += (sender, e) => new QueryLog().ShowDialog();
+            MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Enable = Permissions.查詢紀錄權限;
+
+            MainPanel.RibbonBarItems["自動編班"]["TestPassport"].Click += (sender, e) => new frmTestPassport().ShowDialog();
 
             FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
-            AdminCatalog.Add(new RibbonFeature(Permissions.記錄查詢, "查詢記錄"));
+            AdminCatalog.Add(new RibbonFeature(Permissions.查詢紀錄, "查詢紀錄"));
             AdminCatalog.Add(new RibbonFeature(Permissions.動作設定, "動作設定"));
         }
 

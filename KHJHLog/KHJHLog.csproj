@@ -38,10 +38,11 @@
     </Reference>
     <Reference Include="Campus.Configuration">
       <HintPath>C:\ischool\modules\Campus\Campus.Configuration.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Campus.Report">
       <HintPath>C:\ischool\modules\Campus\Campus.Report.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="DevComponents.DotNetBar2, Version=9.5.0.1, Culture=neutral, PublicKeyToken=7eb7c3a35b91de04, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -65,7 +66,7 @@
     </Reference>
     <Reference Include="FISCA.DSAClient">
       <HintPath>C:\ischool\kernel\FISCA.DSAClient.dll</HintPath>
-      <Private>True</Private>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.DSAUtil">
       <HintPath>C:\ischool\kernel\FISCA.DSAUtil.dll</HintPath>
@@ -77,6 +78,7 @@
     </Reference>
     <Reference Include="FISCA.Permission">
       <HintPath>C:\ischool\kernel\FISCA.Permission.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="FISCA.Presentation">
       <HintPath>C:\ischool\kernel\FISCA.Presentation.dll</HintPath>
@@ -116,6 +118,12 @@
     <Compile Include="frmDetailLog.Designer.cs">
       <DependentUpon>frmDetailLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmTestPassport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTestPassport.Designer.cs">
+      <DependentUpon>frmTestPassport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Permissions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,6 +154,9 @@
     <EmbeddedResource Include="frmDetailLog.resx">
       <DependentUpon>frmDetailLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmTestPassport.resx">
+      <DependentUpon>frmTestPassport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -164,6 +175,7 @@
     <ProjectReference Include="..\iCampusManager\KHJHCentralOffice.csproj">
       <Project>{c25c6de8-29b6-4bd6-a8b3-f79c822191a0}</Project>
       <Name>KHJHCentralOffice</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

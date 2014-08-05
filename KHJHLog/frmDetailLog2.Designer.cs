@@ -40,16 +40,15 @@
             this.txtComment = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.grdDetail = new DevComponents.DotNetBar.Controls.DataGridViewX();
-            this.colIDNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colGradeYear = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colNewClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtContent = new DevComponents.DotNetBar.Controls.TextBoxX();
             this.labelX6 = new DevComponents.DotNetBar.LabelX();
             this.btnExport = new DevComponents.DotNetBar.ButtonX();
+            this.colIDNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStudentNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colStudentName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNewClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colReason = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.grdDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -224,7 +223,6 @@
             this.colIDNumber,
             this.colStudentNumber,
             this.colStudentName,
-            this.colGradeYear,
             this.colClassName,
             this.colNewClassName,
             this.colReason});
@@ -244,48 +242,6 @@
             this.grdDetail.RowTemplate.Height = 24;
             this.grdDetail.Size = new System.Drawing.Size(746, 192);
             this.grdDetail.TabIndex = 11;
-            // 
-            // colIDNumber
-            // 
-            this.colIDNumber.HeaderText = "身分證";
-            this.colIDNumber.Name = "colIDNumber";
-            this.colIDNumber.ReadOnly = true;
-            // 
-            // colStudentNumber
-            // 
-            this.colStudentNumber.HeaderText = "學號";
-            this.colStudentNumber.Name = "colStudentNumber";
-            this.colStudentNumber.ReadOnly = true;
-            // 
-            // colStudentName
-            // 
-            this.colStudentName.HeaderText = "姓名";
-            this.colStudentName.Name = "colStudentName";
-            this.colStudentName.ReadOnly = true;
-            // 
-            // colGradeYear
-            // 
-            this.colGradeYear.HeaderText = "年級";
-            this.colGradeYear.Name = "colGradeYear";
-            this.colGradeYear.ReadOnly = true;
-            // 
-            // colClassName
-            // 
-            this.colClassName.HeaderText = "班級";
-            this.colClassName.Name = "colClassName";
-            this.colClassName.ReadOnly = true;
-            // 
-            // colNewClassName
-            // 
-            this.colNewClassName.HeaderText = "新班級";
-            this.colNewClassName.Name = "colNewClassName";
-            this.colNewClassName.ReadOnly = true;
-            // 
-            // colReason
-            // 
-            this.colReason.HeaderText = "理由";
-            this.colReason.Name = "colReason";
-            this.colReason.ReadOnly = true;
             // 
             // txtContent
             // 
@@ -334,6 +290,42 @@
             this.btnExport.Text = "匯出";
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
+            // colIDNumber
+            // 
+            this.colIDNumber.HeaderText = "身分證";
+            this.colIDNumber.Name = "colIDNumber";
+            this.colIDNumber.ReadOnly = true;
+            // 
+            // colStudentNumber
+            // 
+            this.colStudentNumber.HeaderText = "學號";
+            this.colStudentNumber.Name = "colStudentNumber";
+            this.colStudentNumber.ReadOnly = true;
+            // 
+            // colStudentName
+            // 
+            this.colStudentName.HeaderText = "姓名";
+            this.colStudentName.Name = "colStudentName";
+            this.colStudentName.ReadOnly = true;
+            // 
+            // colClassName
+            // 
+            this.colClassName.HeaderText = "班級";
+            this.colClassName.Name = "colClassName";
+            this.colClassName.ReadOnly = true;
+            // 
+            // colNewClassName
+            // 
+            this.colNewClassName.HeaderText = "新班級";
+            this.colNewClassName.Name = "colNewClassName";
+            this.colNewClassName.ReadOnly = true;
+            // 
+            // colReason
+            // 
+            this.colReason.HeaderText = "理由";
+            this.colReason.Name = "colReason";
+            this.colReason.ReadOnly = true;
+            // 
             // frmDetailLog2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -378,13 +370,12 @@
         private DevComponents.DotNetBar.Controls.DataGridViewX grdDetail;
         private DevComponents.DotNetBar.Controls.TextBoxX txtContent;
         private DevComponents.DotNetBar.LabelX labelX6;
+        private DevComponents.DotNetBar.ButtonX btnExport;
         private System.Windows.Forms.DataGridViewTextBoxColumn colIDNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn colStudentName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colGradeYear;
         private System.Windows.Forms.DataGridViewTextBoxColumn colClassName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNewClassName;
         private System.Windows.Forms.DataGridViewTextBoxColumn colReason;
-        private DevComponents.DotNetBar.ButtonX btnExport;
     }
 }

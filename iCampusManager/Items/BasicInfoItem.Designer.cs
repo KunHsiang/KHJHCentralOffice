@@ -65,7 +65,7 @@
             // 
             this.label2.BackgroundStyle.Class = "";
             this.label2.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.label2.Location = new System.Drawing.Point(14, 59);
+            this.label2.Location = new System.Drawing.Point(14, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 21);
             this.label2.TabIndex = 2;
@@ -79,7 +79,7 @@
             // 
             this.label3.BackgroundStyle.Class = "";
             this.label3.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.label3.Location = new System.Drawing.Point(14, 99);
+            this.label3.Location = new System.Drawing.Point(14, 61);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(34, 21);
             this.label3.TabIndex = 4;
@@ -109,7 +109,7 @@
             this.txtComment.Location = new System.Drawing.Point(314, 17);
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
-            this.txtComment.Size = new System.Drawing.Size(223, 103);
+            this.txtComment.Size = new System.Drawing.Size(223, 65);
             this.txtComment.TabIndex = 7;
             // 
             // txtTitle
@@ -131,7 +131,7 @@
             // 
             this.txtDSNS.Border.Class = "TextBoxBorder";
             this.txtDSNS.Border.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.txtDSNS.Location = new System.Drawing.Point(65, 57);
+            this.txtDSNS.Location = new System.Drawing.Point(65, 106);
             this.txtDSNS.Name = "txtDSNS";
             this.txtDSNS.ReadOnly = true;
             this.txtDSNS.Size = new System.Drawing.Size(188, 25);
@@ -175,7 +175,7 @@
             this.comboItem1,
             this.comboItem2,
             this.comboItem3});
-            this.cmbGroup.Location = new System.Drawing.Point(65, 95);
+            this.cmbGroup.Location = new System.Drawing.Point(65, 57);
             this.cmbGroup.Name = "cmbGroup";
             this.cmbGroup.Size = new System.Drawing.Size(188, 25);
             this.cmbGroup.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -208,7 +208,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "BasicInfoItem";
-            this.Size = new System.Drawing.Size(550, 185);
+            this.Size = new System.Drawing.Size(550, 100);
             this.Load += new System.EventHandler(this.BasicInfoItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

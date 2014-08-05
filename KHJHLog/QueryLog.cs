@@ -4,15 +4,12 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using Campus.Configuration;
 using FISCA.Data;
 using FISCA.LogAgent;
-using FISCA.Presentation;
 using FISCA.UDT;
 using KHJHCentralOffice;
 
@@ -66,7 +63,7 @@ namespace KHJHLog
                 //  ...其他需要和異動相關的欄位
                 //  </Content>
 
-                strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
+                strBuilder.AppendLine(string.Format("身分證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
                 strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
                 strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
@@ -89,9 +86,9 @@ namespace KHJHLog
                 //  </Content>
 
                 strBuilder.AppendLine(string.Format("學生「{0}」從「{1}」調整班級到「{2}」", elmContent.ElementText("StudentName"), elmContent.ElementText("ClassName"), elmContent.ElementText("NewClassName")));
-                strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
+                strBuilder.AppendLine(string.Format("身分證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
-                strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
+                strBuilder.AppendLine(string.Format("備註「{0}」", elmContent.ElementText("Reason")));
                 strBuilder.AppendLine(string.Format("第一優先順班級「{0}」", elmContent.ElementText("FirstPriorityClassName")));
 
                 return strBuilder.ToString();
@@ -110,9 +107,6 @@ namespace KHJHLog
 
                 strBuilder.AppendLine(string.Format("{0}「{1}」", Action, elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("年級「{0}」", elmContent.ElementText("GradeYear")));
-                strBuilder.AppendLine(string.Format("理由「{0}」", elmContent.ElementText("Reason")));
-                strBuilder.AppendLine(string.Format("備註「{0}」", elmContent.ElementText("Comment")));
-                strBuilder.AppendLine(string.Format("文號「{0}」", elmContent.ElementText("DocNo")));
 
                 return strBuilder.ToString();
             }
@@ -129,10 +123,11 @@ namespace KHJHLog
                 //</Content>
 
                 strBuilder.AppendLine(string.Format("變更特殊身分學生「{0}」", elmContent.ElementText("StudentName")));
-                strBuilder.AppendLine(string.Format("身份證「{0}」", elmContent.ElementText("IDNumber")));
+                strBuilder.AppendLine(string.Format("身分證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
                 strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
                 strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
+                strBuilder.AppendLine(string.Format("文號「{0}」", elmContent.ElementText("DocNo")));
                 strBuilder.AppendLine(string.Format("減免人數「{0}」", elmContent.ElementText("NumberReduce")));
 
                 return strBuilder.ToString();
@@ -271,10 +266,10 @@ namespace KHJHLog
 
         private void QueryLog_Load(object sender, EventArgs e)
         {
-            Version version = Assembly.GetExecutingAssembly().GetName().Version;
+            //Version version = Assembly.GetExecutingAssembly().GetName().Version;
 
-            this.Text += "『" + version.ToString() + "』";
-            this.TitleText += "『" + version.ToString() + "』";
+            //this.Text += "『" + version.ToString() + "』";
+            //this.TitleText += "『" + version.ToString() + "』";
 
             DateTime dteStart = DateTime.Today.AddDays(-7);
             dateStart.Value = dteStart;
