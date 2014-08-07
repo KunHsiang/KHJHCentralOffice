@@ -10,3 +10,4 @@ D:\KHJHCentralOffice\KHJHLog\obj\Debug\KHJHLog.frmDetailLog.resources
 D:\KHJHCentralOffice\KHJHLog\obj\Debug\KHJHLog.frmDetailLog2.resources
 D:\KHJHCentralOffice\KHJHLog\obj\Debug\KHJHLog.frmActionList.resources
 D:\KHJHCentralOffice\KHJHLog\obj\Debug\KHJHLog.frmTestPassport.resources
+D:\KHJHCentralOffice\KHJHLog\obj\Debug\KHJHLog.frmClassOrder.resources

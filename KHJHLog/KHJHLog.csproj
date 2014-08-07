@@ -106,6 +106,12 @@
     <Compile Include="frmActionList.Designer.cs">
       <DependentUpon>frmActionList.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmClassOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmClassOrder.Designer.cs">
+      <DependentUpon>frmClassOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDetailLog2.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     <EmbeddedResource Include="frmActionList.resx">
       <DependentUpon>frmActionList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmClassOrder.resx">
+      <DependentUpon>frmClassOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDetailLog2.resx">
       <DependentUpon>frmDetailLog2.cs</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +189,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\achievement_config_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\classmate_128.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

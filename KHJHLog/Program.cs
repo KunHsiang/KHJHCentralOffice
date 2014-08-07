@@ -38,6 +38,10 @@ namespace KHJHLog
             MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Click += (sender, e) => new QueryLog().ShowDialog();
             MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Enable = Permissions.查詢紀錄權限;
 
+            MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Click += (sender, e) => new frmClassOrder().ShowDialog();
+            MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Image = Properties.Resources.classmate_128;
+            MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Size = RibbonBarButton.MenuButtonSize.Medium;
+
             //MainPanel.RibbonBarItems["自動編班"]["TestPassport"].Click += (sender, e) => new frmTestPassport().ShowDialog();
 
             FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
