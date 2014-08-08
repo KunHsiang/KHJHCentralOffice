@@ -42,8 +42,6 @@ namespace KHJHLog
             MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Image = Properties.Resources.classmate_128;
             MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Size = RibbonBarButton.MenuButtonSize.Medium;
 
-            //MainPanel.RibbonBarItems["自動編班"]["TestPassport"].Click += (sender, e) => new frmTestPassport().ShowDialog();
-
             FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
             AdminCatalog.Add(new RibbonFeature(Permissions.查詢紀錄, "查詢紀錄"));
             AdminCatalog.Add(new RibbonFeature(Permissions.動作設定, "動作設定"));
