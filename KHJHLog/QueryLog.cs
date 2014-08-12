@@ -56,7 +56,7 @@ namespace KHJHLog
                 //     <IDNumber>   </IDNumber>
                 //     <StudentNumber> </StudentNumber>
                 //     <StudentName>   </StudentName>
-                //     <ClassName> </ClassName>
+                //     <NewClassName> </NewClassName>
                 //     <SeatNo> </SeatNo>
                 //     <ScheduleClassDate> </ScheduleClassDate>
                 //     <Reason> </Reason>
@@ -66,7 +66,7 @@ namespace KHJHLog
                 strBuilder.AppendLine(string.Format("身分證「{0}」", elmContent.ElementText("IDNumber")));
                 strBuilder.AppendLine(string.Format("學號「{0}」", elmContent.ElementText("StudentNumber")));
                 strBuilder.AppendLine(string.Format("姓名「{0}」", elmContent.ElementText("StudentName")));
-                strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("ClassName")));
+                strBuilder.AppendLine(string.Format("班級「{0}」", elmContent.ElementText("NewClassName")));
                 strBuilder.AppendLine(string.Format("座號「{0}」", elmContent.ElementText("SeatNo")));
                 strBuilder.AppendLine(string.Format("備註「{0}」", elmContent.ElementText("Reason")));
 
