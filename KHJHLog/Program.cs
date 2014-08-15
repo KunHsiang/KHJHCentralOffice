@@ -38,9 +38,13 @@ namespace KHJHLog
             MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Click += (sender, e) => new QueryLog().ShowDialog();
             MainPanel.RibbonBarItems["自動編班"]["查詢紀錄"].Enable = Permissions.查詢紀錄權限;
 
-            MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Click += (sender, e) => new frmClassOrder().ShowDialog();
-            MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Image = Properties.Resources.classmate_128;
-            MainPanel.RibbonBarItems["自動編班"]["查詢編班(測試)"].Size = RibbonBarButton.MenuButtonSize.Medium;
+            MainPanel.RibbonBarItems["自動編班"]["查詢編班"].Click += (sender, e) => new frmClassOrder().ShowDialog();
+            MainPanel.RibbonBarItems["自動編班"]["查詢編班"].Image = Properties.Resources.classmate_128;
+            MainPanel.RibbonBarItems["自動編班"]["查詢編班"].Size = RibbonBarButton.MenuButtonSize.Medium;
+
+            MainPanel.RibbonBarItems["自動編班"]["查詢高關懷學生"].Click += (sender, e) => new frmSpecial().ShowDialog();
+            MainPanel.RibbonBarItems["自動編班"]["查詢高關懷學生"].Image = Properties.Resources.student_a_128;
+            MainPanel.RibbonBarItems["自動編班"]["查詢高關懷學生"].Size = RibbonBarButton.MenuButtonSize.Medium;
 
             FISCA.Permission.Catalog AdminCatalog = FISCA.Permission.RoleAclSource.Instance["自動編班"]["功能按鈕"];
             AdminCatalog.Add(new RibbonFeature(Permissions.查詢紀錄, "查詢紀錄"));

@@ -91,6 +91,16 @@ namespace KHJHLog.Properties {
         }
         
         /// <summary>
+        ///   查詢類型 System.Drawing.Bitmap 的當地語系化資源。
+        /// </summary>
+        internal static System.Drawing.Bitmap student_a_128 {
+            get {
+                object obj = ResourceManager.GetObject("student_a_128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   查詢類型 System.Byte[] 的當地語系化資源。
         /// </summary>
         internal static byte[] 學生成績通知單_3_6_ {
