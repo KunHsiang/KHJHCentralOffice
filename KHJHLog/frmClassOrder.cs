@@ -61,8 +61,14 @@ namespace KHJHLog
 
                 grdClassOrder.Rows.Clear();
 
+                List<ClassOrder> ClassOrders = new List<ClassOrder>();
+
                 foreach (XElement elmClass in elmResponse.Elements("Class"))
                 {
+                    ClassOrder vClassOrder = new ClassOrder();
+
+                    ClassOrders.Add(vClassOrder);
+
                     string ClassName = elmClass.ElementText("ClassName");
                     string StudentCount = elmClass.ElementText("StudentCount");
                     string ClassStudentCount = elmClass.ElementText("ClassStudentCount");
@@ -71,20 +77,37 @@ namespace KHJHLog
                     if (!string.IsNullOrWhiteSpace(NumberReduceSum))
                         ClassStudentCount = ClassStudentCount + "(" + StudentCount + "+" + NumberReduceSum + ")";
 
+                    
+
                     string NumberReduceCount = elmClass.ElementText("NumberReduceCount");
                     string Lock = elmClass.ElementText("Lock");
                     string Comment = elmClass.ElementText("Comment");
                     string ClassOrder = string.Empty;
 
+                    vClassOrder.ClassName = ClassName;
+                    vClassOrder.StudentCount = StudentCount;
+                    vClassOrder.ClassStudentCount = ClassStudentCount;
+                    vClassOrder.NumberReduceSum = NumberReduceSum;
+                    vClassOrder.NumberReduceCount = NumberReduceCount;
+                    vClassOrder.Lock = Lock;
+                    vClassOrder.Comment = Comment;
+                    vClassOrder.ClassOrderNumber = ClassOrder;
+                    vClassOrder.ClassStudentCountValue = StudentCount.GetInt() + NumberReduceSum.GetInt();
+                }
+
+                ClassOrders.CalculateClassOrder();
+
+                foreach(ClassOrder vClassOrder in ClassOrders)
+                {
                     grdClassOrder.Rows.Add(
                         School,
-                        ClassName,
-                        StudentCount,
-                        ClassStudentCount,
-                        NumberReduceCount,
-                        ClassOrder,
-                        Lock,
-                        Comment);
+                        vClassOrder.ClassName,
+                        vClassOrder.StudentCount,
+                        vClassOrder.ClassStudentCount,
+                        vClassOrder.NumberReduceCount,
+                        vClassOrder.ClassOrderNumber,
+                        vClassOrder.Lock,
+                        vClassOrder.Comment);
                 }
             }
             catch (Exception ve)

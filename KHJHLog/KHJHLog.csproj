@@ -99,6 +99,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassOrder.cs" />
+    <Compile Include="ClassOrderExtension.cs" />
     <Compile Include="DataGridViewExport.cs" />
     <Compile Include="frmActionList.cs">
       <SubType>Form</SubType>

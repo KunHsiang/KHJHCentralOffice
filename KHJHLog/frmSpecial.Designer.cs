@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdClassOrder = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.btnExport = new DevComponents.DotNetBar.ButtonX();
             this.labelX1 = new DevComponents.DotNetBar.LabelX();
@@ -47,6 +47,9 @@
             // 
             this.grdClassOrder.AllowUserToAddRows = false;
             this.grdClassOrder.AllowUserToDeleteRows = false;
+            this.grdClassOrder.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdClassOrder.BackgroundColor = System.Drawing.Color.White;
             this.grdClassOrder.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdClassOrder.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -56,22 +59,22 @@
             this.colSeatNo,
             this.colNumberReduce,
             this.colDocNo});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdClassOrder.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("微軟正黑體", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdClassOrder.DefaultCellStyle = dataGridViewCellStyle1;
             this.grdClassOrder.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(215)))), ((int)(((byte)(229)))));
-            this.grdClassOrder.Location = new System.Drawing.Point(12, 57);
+            this.grdClassOrder.Location = new System.Drawing.Point(14, 55);
             this.grdClassOrder.Name = "grdClassOrder";
             this.grdClassOrder.ReadOnly = true;
             this.grdClassOrder.RowHeadersVisible = false;
             this.grdClassOrder.RowTemplate.Height = 24;
             this.grdClassOrder.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdClassOrder.Size = new System.Drawing.Size(656, 503);
+            this.grdClassOrder.Size = new System.Drawing.Size(657, 530);
             this.grdClassOrder.TabIndex = 5;
             // 
             // btnExport
@@ -170,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(680, 570);
+            this.ClientSize = new System.Drawing.Size(687, 598);
             this.Controls.Add(this.grdClassOrder);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.labelX1);
